@@ -27,7 +27,7 @@ login *.png
 # Arquivos diversos
 *.txt
 /*.
-/LinkedIn/linkedin.py
+/test/LinkedIn/linkedin.py
 
 
 O conteudo da vaga na *º pagina na posição *º das vagas.png
