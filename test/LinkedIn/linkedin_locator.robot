@@ -54,13 +54,16 @@ ${botao_AdicionarNota}    //button[contains(@aria-label,'Adicionar nota')]
 
 *** Keywords ***
 gerar path do item
-    [Arguments]    ${numero_item}   ${std}= ""
+    [Arguments]    ${numero_item}   ${std}=None
     [Documentation]    Gera o caminho do item baseado no número do item e na página.
     ...                Utiliza o número do item e a página para construir o caminho do elemento.
     ${item} =    Set Variable    //div[contains(@class,'job-card-container--viewport-tracking-${numero_item}')]
-    ${resposta}=    Run Keyword And Return Status    Should Be Equal   ${std}   ""
+    Log    message=Item: ${item}
+    # Verifica se o padrão (std) está vazio e ajusta o caminho do item
+    ${resposta}=    Run Keyword And Return Status    Should Be Equal As Strings   ${std}   None
     IF   not ${resposta}
         ${item} =    Catenate    SEPARATOR=    ${item}   //${std} 
+        Log    message=Item: ${item}
     END
     Return From Keyword    ${item}
     
