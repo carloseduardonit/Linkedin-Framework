@@ -28,12 +28,24 @@ Acesso as "${Paginas}" paginas dos cartoes de vagas e as vagas
         Sleep    150
         Capture Page Screenshot   pagina ${pagina}.png
     END
-    
+
+A "${numero_item}"º vaga não está candidatada?
+    [Documentation]    Esta vaga não está candidatada
+    [Tags]   Validação   No_Test
+    ${resposta} =  A "${numero_item}"º vaga está candidatada?
+    Return From Keyword  not ${resposta}
+
+A "${numero_item}"º vaga não está fechada?
+    [Documentation]    Esta vaga não está fechada
+    [Tags]   Validação   No_Test
+    ${resposta} =  A "${numero_item}"º vaga está fechada?
+    Return From Keyword IF   ${resposta}    False
+    Return From Keyword  True
 A "${numero_item}"º vaga está candidatada?
     [Documentation]    Esta candidato a esta vaga?
     [Tags]    validação     OK
 
-    ${Candidatou} =  Set Variable     //div[contains(@class,'job-card-container--viewport-tracking-${numero_item}')]//li[contains(.,'Candidatou-se')]
+    ${Candidatou} =   gerar path do item    ${numero_item}    li[contains(.,'Candidatou-se')]
     ${resposta} =  Is Element Visible   ${Candidatou}
     Return From Keyword IF   ${resposta}    True
     Return From Keyword  False
@@ -41,7 +53,7 @@ A "${numero_item}"º vaga está candidatada?
 A "${numero_item}"º vaga está fechada?
     [Documentation]    Esta vaga está fechada
     [Tags]   Validação    OK
-    ${nao_exibir} =  Set Variable    //div[contains(@class,'job-card-container--viewport-tracking-${numero_item}')]//div[contains(.,'Não exibiremos mais esta vaga a você.')]
+    ${nao_exibir} =  gerar path do item    ${numero_item}     div[contains(.,'Não exibiremos mais esta vaga a você.')]
     ${resposta} =  Is Element Visible   ${nao_exibir}
     Return From Keyword IF   ${resposta}    True
     Return From Keyword  False

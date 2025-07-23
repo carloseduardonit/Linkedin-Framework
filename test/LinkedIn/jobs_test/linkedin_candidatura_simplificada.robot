@@ -9,20 +9,21 @@ Acesso as vagas
     ...    e inicia candidatura nas que ainda não foram aplicadas.  
     [Tags]    Linkedin    OK
      
-    ${Pagina}=    Evaluate    ${Pagina} + 1
+    ${Pagina}=   Qual e pagina atual?
     Set Global Variable    ${Pagina}
-    Log    message=Pagina ${Pagina} acessada
+    Log    message= ${Pagina}º pagina acessada
 
     #Wait Until Element Is Visible    locator=${div_vagas}    timeout=30s
     ${Vagas} =    RPA.Browser.Selenium.Get Element Count   ${div_vagas}
     ${numero_vaga} =  Set Variable    0
     WHILE  ${numero_vaga} < ${Vagas}
         ${teste} =     Ja se candidatou a esta vaga?      ${numero_vaga} 
-        #Scroll E Clica No Elemento   //div[contains(@class,'job-card-container--viewport-tracking-${${Vagas}-1}')]//a
-        #IF   not ${teste}
+        ${aux}=    gerar path do item  ${${Vagas}-1}  a
+        IF   not ${teste}
+            Scroll E Clica No Elemento  ${aux}     
             Acessar o cartao da Vaga    ${numero_vaga}  
             Faça a Candidatura da vaga simplificada
-        #END
+        END
         Fechar o cartao da Vaga   ${numero_vaga}
         ${Vagas} =   RPA.Browser.Selenium.Get Element Count     ${div_vagas}
         ${numero_vaga} =  Set Variable    ${${numero_vaga} + 1}
@@ -34,15 +35,16 @@ Acessar o cartao da Vaga
     [Tags]    cartaosVagas    OK
     [Arguments]    ${numero_item}
 
-    ${card_vagas}=    Set Variable    //div[contains(@class,'job-card-container--viewport-tracking-${numero_item}')]
-    ${item}=    Set Variable     //div[contains(@class,'job-card-container--viewport-tracking-${numero_item}')]//a
+    ${card_vagas}=  gerar path do item   ${numero_item}
+    ${item}=    gerar path do item    ${numero_item}      a[contains(@class,'_link')]
     ${conteudo}=     Set Variable    //div[contains(@class,'job-details--wrapper')]
 
 
     Wait Until Element Is Visible    locator=${item}    timeout= 150
-    Capture Element Screenshot    locator=${card_vagas}     filename=O nome da vaga na ${Pagina}º pagina na posição ${${numero_item}+1}º das vagas.png  
-    Click Element If Visible    ${item}
-    Capture Element Screenshot    locator=${conteudo}   filename=O conteudo da vaga na ${Pagina}º pagina na posição ${${numero_item}+1}º das vagas.png 
+
+    Capture Element Screenshot    locator=${card_vagas}     filename=O nome da vaga na ${Pagina}º pagina na posição ${${numero_item}+1}º das vagas.png
+    Manipular Element    ${item}
+    Capture Element Screenshot    locator=${conteudo}   filename=O conteudo da vaga na ${Pagina}º pagina na posição ${${numero_item}+1}º das vagas.png
 
 Candidatar ao processo extensivo
     [Documentation]    Realiza a candidatura automática em um processo seletivo com etapas progressivas.
@@ -63,14 +65,17 @@ Candidatar ao processo extensivo
             Manipular Element   ${botao_avancarCandidatura} 
             Manipular Element   ${botao_revisarCandidatura}
             Manipular Element   ${botao_enviarCandidatura}           
-            Manipular Element   ${botao_concluirCandidatura}
+            
             Sleep    2s
             IF   not ${progresso_valor}
                 BREAK
             END
             ${progresso_valor} =    Obter valor do progresso
         END 
-        Capture Page Screenshot 
+        Manipular Element   ${botao_concluirCandidatura}
+        Manipular Element   ${botao_finalizarCandidatura}
+        Capture Page Screenshot   Candidatura finalizada.png
+        Sleep    2s
         
     END
 
@@ -112,14 +117,13 @@ Faça a Candidatura da vaga simplificada
     ...                - Tenta aplicar pelos dois tipos de processo (simples e extensivo)
     [Tags]    Linkedin    OK
 
-    Capture Page Screenshot
-
     ${resposta}=    Is Element Visible    ${botao_iniciarCandidaturaVagaSimplificada}
     IF    ${resposta}
         Manipular Element    ${botao_iniciarCandidaturaVagaSimplificada}
         Remover aviso de segurança
         Candidatar ao processo simples
         Candidatar ao processo extensivo
+        Sleep    10s
     END
 
 Obter valor do progresso

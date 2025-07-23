@@ -90,4 +90,13 @@ Scroll E Clica No Elemento
     ...    var el = document.evaluate("${item_xpath}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     ...    if (el) { el.scrollIntoView({block: "center"}); }
     Wait Until Element Is Visible    ${item_xpath}    timeout=10s
-    Click Element    ${item_xpath}
+    Manipular Element  ${item_xpath}
+
+
+Qual e pagina atual?
+    [Documentation]    Retorna o número da página atual, que é armazenado na variável global `${Pagina}`.
+    ...                Essa keyword é útil para rastrear a navegação entre páginas de resultados.
+    [Tags]    Pagina    OK
+    ${aux} =  set Variable     //button[contains(@class,'jobs-search-pagination__indicator-button--active')]//span
+    ${pagina_atual} =  Get Element Attribute  ${aux}  textContent
+    Return From Keyword    ${pagina_atual}
