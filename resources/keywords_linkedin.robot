@@ -15,6 +15,8 @@ ${span_Local_Vaga}      //span[contains(.,'${cidade} ${Pais} ${Modalidade}')]
 ${urlJob}    https://www.linkedin.com/jobs/
 ${urlMinhaRede}    https://www.linkedin.com/mynetwork/grow/
 
+
+
 *** Keywords ***
 
 Close Linkedin
@@ -40,12 +42,12 @@ Pesquisar de contato como "${nome}"
     
     Wait Until Element Is Visible   locator=${h3_nome}   timeout=150
     RPA.Browser.Selenium.Go To    url=${urlMinhaRede}
-    Sleep  15
+    Sleep  ${15s}
     ${campoSeach} =    Set Variable    //input[@data-view-name='search-global-typeahead-input']
     Input Text    ${campoSeach}   ${nome}
     RPA.Browser.Selenium.Press Keys    ${campoSeach}    ENTER
-    Sleep  15
+    Sleep  ${15s}
     Wait Until Element Is Visible    //a[contains(.,'Ver todos os resultados de pessoas')][1]
     Click Element    //a[contains(.,'Ver todos os resultados de pessoas')][1]
-    Sleep  30s
+    Sleep  ${15s}
     Capture Page Screenshot     Contato de ${nome}.png

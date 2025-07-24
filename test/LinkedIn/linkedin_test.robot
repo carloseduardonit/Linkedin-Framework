@@ -19,7 +19,7 @@ Clique na filtragem do modelo Home Office
     [Tags]    button
     Wait Until Element Is Visible    locator=${botao.homeOffice}    timeout=15
     Click Button  ${botao.homeOffice}
-    Sleep    150
+    Sleep    ${15s}
     Capture Page Screenshot
 
 
@@ -36,8 +36,7 @@ Vagas home office simplificado
     Acessar o cartao da Vaga    5
     Faça a Candidatura da vaga simplificada
     Fechar o cartao da Vaga    5
-    Sleep   1500
-
+    Sleep  ${10s}
 Acessar o cartoes de Vagas 
     [Documentation]    Acessar o cartão da Vaga
     [Tags]   cartaosVagas

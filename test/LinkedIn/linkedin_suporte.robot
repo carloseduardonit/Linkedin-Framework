@@ -1,6 +1,10 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
 *** Variables ***
+${5s}  5
+${10s}  10
+${15s}  15
+${30s}  30
 ${job}      Analista de qualidade 
 *** Keywords ***
 Manipular Element
@@ -8,7 +12,7 @@ Manipular Element
     [Tags]    Manipular    OK
     [Arguments]   ${elemento}
     Run Keyword And Ignore Error    Click Element If Visible  ${elemento}    
-    Sleep    3s
+    Sleep    ${5s}
 
 
 Quantos elementos 
@@ -27,5 +31,5 @@ Reducao da tela do navegador
     ${i} =    Set Variable    0
     FOR    ${i}    IN RANGE    ${Clique}
         Press Keys   NONE  CTRL+ADD
-        Sleep    30
+        Sleep    ${30s}
     END

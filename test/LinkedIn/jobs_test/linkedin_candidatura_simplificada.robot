@@ -40,7 +40,7 @@ Acessar o cartao da Vaga
     ${conteudo}=     Set Variable    //div[contains(@class,'job-details--wrapper')]
 
 
-    Wait Until Element Is Visible    locator=${item}    timeout= 150
+    Wait Until Element Is Visible    locator=${item}    timeout= ${30s}
 
     Capture Element Screenshot    locator=${card_vagas}     filename=O nome da vaga na ${Pagina}º pagina na posição ${${numero_item}+1}º das vagas.png
     Manipular Element    ${item}
@@ -66,7 +66,7 @@ Candidatar ao processo extensivo
             Manipular Element   ${botao_revisarCandidatura}
             Manipular Element   ${botao_enviarCandidatura}           
             
-            Sleep    2s
+            Sleep    ${5s}
             IF   not ${progresso_valor}
                 BREAK
             END
@@ -75,7 +75,7 @@ Candidatar ao processo extensivo
         Manipular Element   ${botao_concluirCandidatura}
         Manipular Element   ${botao_finalizarCandidatura}
         Capture Page Screenshot   Candidatura finalizada.png
-        Sleep    2s
+        Sleep    ${5s}
         
     END
 
@@ -106,7 +106,7 @@ Clique na filtragem da Candidatura simplificada
     ELSE
         Log    message=Botão de filtragem para vaga simplificada não encontrado
     END
-    Sleep   10
+    Sleep   ${10s}
     Capture Page Screenshot     Vagas de ${job} no modelo de vaga simplificada.png
 
 Faça a Candidatura da vaga simplificada
@@ -123,7 +123,7 @@ Faça a Candidatura da vaga simplificada
         Remover aviso de segurança
         Candidatar ao processo simples
         Candidatar ao processo extensivo
-        Sleep    10s
+        Sleep    ${10s}
     END
 
 Obter valor do progresso
