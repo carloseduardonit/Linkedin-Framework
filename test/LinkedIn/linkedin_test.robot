@@ -37,6 +37,7 @@ Vagas home office simplificado
     Faça a Candidatura da vaga simplificada
     Fechar o cartao da Vaga    5
     Sleep  ${10s}
+    
 Acessar o cartoes de Vagas 
     [Documentation]    Acessar o cartão da Vaga
     [Tags]   cartaosVagas

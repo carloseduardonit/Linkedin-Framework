@@ -2,6 +2,7 @@
 Library    RPA.Browser.Selenium
 Variables   ../../LinkedIn/linkedin.py
 Resource    ../../LinkedIn/linkedin_locator.robot
+Resource    ../../LinkedIn/linkedin_suporte.robot
 
 *** Variables **
 ${loginLinkedin}    https://www.linkedin.com/login/pt?fromSignIn=true&trk=guest_homepage-basic_nav-header-signin
@@ -22,7 +23,7 @@ Open Linkedin
     Input Text    ${campo_login}  ${email}
     Input Password    ${campo_senha}    ${senha}
     Click Button    ${botao_submit}
-    Sleep    15
+    Sleep    ${15s}
     Capture Page Screenshot    login do usuario ${name}.png 
 
 Open Linkedin I
@@ -35,7 +36,7 @@ Open Linkedin I
     Input Text    ${campo_login}    ${email_usuario}
     Input Password    ${campo_senha}    ${senha_usuario}
     Click Button   ${botao_submit}
-    Sleep    15
+    Sleep    ${15s}
     Capture Page Screenshot    login do usuario ${name}.png 
 
 Esta conectado ao Linkedin no Feed
@@ -44,8 +45,7 @@ Esta conectado ao Linkedin no Feed
     ${resposta} =  Run Keyword And Return Status    Is Element Visible   ${h3_nome}
     IF  ${resposta}
         Log    O usuario ${name} esta conectado ao LinkedIn
-        Capture Page Screenshot   O usuario ${name} esta conectado.png
-        
+        Capture Page Screenshot   O usuario ${name} esta conectado.png 
     ELSE
         Log    O usuario ${name} não esta conectado ao LinkedIn
         Capture Page Screenshot   O usuario ${name} não esta conectado.png
