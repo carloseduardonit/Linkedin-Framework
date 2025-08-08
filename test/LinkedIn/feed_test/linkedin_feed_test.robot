@@ -1,6 +1,7 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
 Resource   ../linkedin_locator.robot
+resource   ../linkedin_suporte.robot
 
 
 *** Variables ***
@@ -10,7 +11,7 @@ Resource   ../linkedin_locator.robot
 
 # | Java Developer | Java Engineer | Java Programmer | Java Software Engineer | Java Software Developer | Java Application Developer | Java Web Developer | Java Backend Developer | Java Frontend Developer | Java Full Stack Developer | Java Mobile Developer | Java Cloud Developer |
 
-${job}     QA
+${job}     jAVA
 ${cidade}      São Paulo, 
 ${Pais}    Brasil
 ${Modalidade}    (Remoto)
@@ -18,15 +19,7 @@ ${span_Local_Vaga}      //span[contains(.,'${cidade} ${Pais} ${Modalidade}')]
 ${urlJob}    https://www.linkedin.com/jobs/
 
 *** Keywords ***
-Obter termo de pesquisa 
-    [Documentation]    Retorna o termo de pesquisa para uso no campo de busca do LinkedIn.
-    ...                Caso o parâmetro ${aspas} seja True, o valor será retornado entre aspas duplas (ex: "QA Analyst").
-    ...                Caso seja False (padrão), retorna o termo limpo, sem aspas.
-    [Arguments]    ${job}    ${aspas}=False
-    [Tags]    No_Test
-    ${aspas} =   Convert To Boolean    ${aspas}
-    Return From Keyword If    ${aspas}    "${job}"
-    Return From Keyword    ${job}
+
 
 Pesquisar para emprego no Linkedin
     [Documentation]    Pesquisa vagas no LinkedIn com base no termo de cargo desejado 

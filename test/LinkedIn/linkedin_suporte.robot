@@ -5,8 +5,9 @@ ${5s}  5
 ${10s}  10
 ${15s}  15
 ${30s}  30
-${job}      Analista de qualidade 
+
 *** Keywords ***
+
 Manipular Element
     [Documentation]    Manipular o elemento caso ele esteja visivel, senão ignora o erro
     [Tags]    Manipular    OK
@@ -14,6 +15,15 @@ Manipular Element
     Run Keyword And Ignore Error    Click Element If Visible  ${elemento}    
     Sleep    ${5s}
 
+Obter termo de pesquisa 
+    [Documentation]    Retorna o termo de pesquisa para uso no campo de busca do LinkedIn.
+    ...                Caso o parâmetro ${aspas} seja True, o valor será retornado entre aspas duplas (ex: "QA Analyst").
+    ...                Caso seja False (padrão), retorna o termo limpo, sem aspas.
+    [Arguments]    ${job}    ${aspas}=False
+    [Tags]    No_Test
+    ${aspas} =   Convert To Boolean    ${aspas}
+    Return From Keyword If    ${aspas}    "${job}"
+    Return From Keyword    ${job}
 
 Quantos elementos 
     [Documentation]    Verifica quantos elementos existem na tela
