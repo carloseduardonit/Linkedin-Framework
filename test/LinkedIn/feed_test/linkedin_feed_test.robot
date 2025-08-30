@@ -11,7 +11,7 @@ resource   ../linkedin_suporte.robot
 
 # | Java Developer | Java Engineer | Java Programmer | Java Software Engineer | Java Software Developer | Java Application Developer | Java Web Developer | Java Backend Developer | Java Frontend Developer | Java Full Stack Developer | Java Mobile Developer | Java Cloud Developer |
 
-${job}     jAVA
+
 ${cidade}      São Paulo, 
 ${Pais}    Brasil
 ${Modalidade}    (Remoto)
