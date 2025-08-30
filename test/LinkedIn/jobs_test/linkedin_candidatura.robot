@@ -100,3 +100,5 @@ Qual e pagina atual?
     ${aux} =  set Variable     //button[contains(@class,'jobs-search-pagination__indicator-button--active')]//span
     ${pagina_atual} =  Get Element Attribute  ${aux}  textContent
     Return From Keyword    ${pagina_atual}
+
+

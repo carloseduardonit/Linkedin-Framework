@@ -1,4 +1,12 @@
 @echo off
+REM === Ativa o ambiente virtual ===
+IF NOT EXIST ".venv\" (
+    echo Ambiente virtual não encontrado.
+    python -m venv .venv
+    call .\.venv\Scripts\activate.bat
+    exit /b
+)
+
 REM === Instala dependências se o arquivo existir ===
 IF EXIST dependencies.txt (
     pip list

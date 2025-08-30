@@ -7,11 +7,6 @@ Test Teardown    Close Linkedin
 
 *** Variables ***
 
-${botao.homeOffice}    //button[contains(@id,'workplaceType')]
-${combo.homeOffice}    (//input[contains(@name,'remoto-filter-value')])[1]
-
-# link
-${link_Visulizar}     //a[contains(@class,'jobs-s-apply__application-link display-flex align-items-center ember-view')]
 
 *** Keywords ***
 Clique na filtragem do modelo Home Office
@@ -21,8 +16,6 @@ Clique na filtragem do modelo Home Office
     Click Button  ${botao.homeOffice}
     Sleep    ${15s}
     Capture Page Screenshot
-
-
 
     
 *** Test Cases ***
@@ -68,3 +61,13 @@ Fazer Networking no linkedin
       #  ${contador} =  Set Variable    ${${contador} + 1}
        # ${quantidade_contatos} =    Get WebElements    ${div_contatos}
     #END
+
+Cadastrar seu curriculo a vaga
+    [Documentation]     Cadastre seu curriculo a vaga
+    
+    Pesquisar para emprego no Linkedin
+    Clique na filtragem da Candidatura simplificada
+    Acessar o cartao da Vaga    5
+    Faça a Candidatura da vaga simplificada
+    Fechar o cartao da Vaga    5
+    Sleep  ${10s}

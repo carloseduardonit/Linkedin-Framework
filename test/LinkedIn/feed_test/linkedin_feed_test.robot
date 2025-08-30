@@ -34,3 +34,6 @@ Pesquisar para emprego no Linkedin
     RPA.Browser.Selenium.Press Keys    ${campoSeach}    ENTER
     Sleep    15
     Capture Page Screenshot    Vagas de ${job}.png
+
+Pesquisar de vagas de "${emprego}" no Linkedin
+    No Operation
