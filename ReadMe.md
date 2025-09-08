@@ -22,6 +22,10 @@ Este projeto fornece um framework para integrar e gerenciar funcionalidades do L
 ## Uso
 
 Consulte a documentação para exemplos e referência da API.
+```bash
+pip install rpaframework
+
+```
 
 ## Licença
 

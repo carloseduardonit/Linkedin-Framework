@@ -1,6 +1,6 @@
 @echo off
 REM === Ativa o ambiente virtual ===
-IF NOT EXIST ".venv\" (
+IF NOT EXIST .venv\ (
     echo Ambiente virtual não encontrado.
     python -m venv .venv
     call .\.venv\Scripts\activate.bat
@@ -15,7 +15,7 @@ IF EXIST dependencies.txt (
     del /Q dependencies.txt
 )
 REM === Cria Arquivo necessário ===
-if not exist "LinkedIn\linkedin.py" (
+if not exist \test\LinkedIn\linkedin.py (
     (
         echo # Script para acessar o LinkedIn e realizar ações automatizadas
         echo senha = ""
