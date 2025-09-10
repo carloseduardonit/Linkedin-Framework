@@ -14,6 +14,8 @@ ${botao_submit}    //button[contains(@type,'submit')]
 # Campos de pesquisas
 ${campoSeach}    //input[contains(@class,'basic-input jobs-search-box__text-input jobs-search-box__keyboard-text-input jobs-search-global-typeahead__input')]
 
+# Paragrafo
+${p_nome}      //p[contains(.,'${name}')]
 # Titulos
 ${h3_nome}      //h3[contains(.,'${name}')]
 #${h2_title}    //h2[contains(.,'Conheça as oportunidades')]
