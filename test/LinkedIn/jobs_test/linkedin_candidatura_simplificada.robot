@@ -72,12 +72,11 @@ Candidatar ao processo extensivo
             END
             ${progresso_valor} =    Obter valor do progresso
         END 
-        Manipular Element   ${botao_concluirCandidatura}
-        Manipular Element   ${botao_finalizarCandidatura}
-        Capture Page Screenshot   Candidatura finalizada.png
-        Sleep    ${5s}
-        
     END
+    Manipular Element   ${botao_concluirCandidatura}
+    Manipular Element   ${botao_finalizarCandidatura}
+    Capture Page Screenshot   Candidatura finalizada.png
+    Sleep    ${5s}
 
 Candidatar ao processo simples
     [Documentation]    Realiza a candidatura simples quando não há barra de progresso visível.
@@ -136,5 +135,5 @@ Obter valor do progresso
         ${progresso_valor} =    Convert To Number   ${progresso_valor}
         Return From Keyword    ${progresso_valor}
     ELSE
-        Return From Keyword    100.00
+        Return From Keyword    ${resposta}
     END
