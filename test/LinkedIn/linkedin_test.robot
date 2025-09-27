@@ -71,3 +71,11 @@ Cadastrar seu curriculo a vaga
     Faça a Candidatura da vaga simplificada
     Fechar o cartao da Vaga    5
     Sleep  ${10s}
+
+Candidatar a vaga via Gupy
+    [Documentation]    Candidatar a vaga via Gupy
+    [Tags]    Linkedin    Gupy
+    Pesquisar para emprego no Linkedin
+    Gerar Link da Gupy
+    acessar Link da Gupy
+    Sleep  ${10s}
