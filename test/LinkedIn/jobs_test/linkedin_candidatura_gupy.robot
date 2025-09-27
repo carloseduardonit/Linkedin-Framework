@@ -19,3 +19,19 @@ Gerar Link da Gupy
         Set Suite Variable    ${link_vaga}    ${None}
     END
 
+Acessar a página da vaga
+    [Arguments]    ${link_vaga}
+    Open Browser    ${link_vaga}  
+
+acessar Link da Gupy
+    [Documentation]    Acessa o link da vaga armazenado na variável de suíte `${link_vaga}`.
+    ...                Se o link for None, registra uma mensagem de erro.
+    [Tags]    Link    No_Test
+    IF    ${link_vaga} != ${None}
+        Log    message=Acessando o link da vaga: ${link_vaga}
+        Acessar a página da vaga    ${link_vaga}
+    ELSE
+        Log    message=Link da vaga não disponível para acesso
+    END
+
+    
