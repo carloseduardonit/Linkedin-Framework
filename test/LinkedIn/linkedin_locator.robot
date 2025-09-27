@@ -12,7 +12,9 @@ ${campo_senha}      //input[@id='password']
 ${botao_submit}    //button[contains(@type,'submit')]
 
 # Campos de pesquisas
-${campoSeach}    //input[contains(@class,'basic-input jobs-search-box__text-input jobs-search-box__keyboard-text-input jobs-search-global-typeahead__input')]
+#${campoSeach}    //input[contains(@class,'basic-input jobs-search-box__text-input jobs-search-box__keyboard-text-input jobs-search-global-typeahead__input')]
+${campoSeach}   //input[contains(@placeholder,'Cargo, competência ou empresa')]
+${campoLocal}   //input[contains(@placeholder,"Cidade, estado ou código postal")]
 
 # Paragrafo
 ${p_nome}      //p[contains(.,'${name}')]
@@ -44,7 +46,7 @@ ${botao_finalizarCandidatura}  //button[@class='artdeco-button artdeco-button--c
 ${botao_avançarPaginaCartao}    //button[@aria-label='Ver próxima página'][contains(.,'Avançar')]
 
 # Variaveis de controle
-${job}     QA
+
 ${progresso_valor}  0
 ${contador}  -1
 ${contador_vaga}  0

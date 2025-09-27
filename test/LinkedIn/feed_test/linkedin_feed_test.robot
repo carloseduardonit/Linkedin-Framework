@@ -12,9 +12,11 @@ resource   ../linkedin_suporte.robot
 # | Java Developer | Java Engineer | Java Programmer | Java Software Engineer | Java Software Developer | Java Application Developer | Java Web Developer | Java Backend Developer | Java Frontend Developer | Java Full Stack Developer | Java Mobile Developer | Java Cloud Developer |
 
 
-${cidade}      São Paulo, 
+${cidade}      ''
+${estado}    Rio de Janeiro, 
 ${Pais}    Brasil
 ${Modalidade}    (Remoto)
+${Local}      ${cidade} ${estado} ${Pais}
 ${span_Local_Vaga}      //span[contains(.,'${cidade} ${Pais} ${Modalidade}')]
 ${urlJob}    https://www.linkedin.com/jobs/
 
@@ -30,7 +32,9 @@ Pesquisar para emprego no Linkedin
     
     Element Should Be Visible    ${h2_title}   timeout=30
     ${Auxiliar}=  Obter termo de pesquisa    ${job}     ${true}
-    Input Text    ${campoSeach}   ${Auxiliar}
+    Wait Until Element Is Visible   locator=${campoSeach}    timeout=15
+    Input Text    ${campoSeach}    ${Auxiliar}
+    Input text    ${campoLocal}    ${Local}
     RPA.Browser.Selenium.Press Keys    ${campoSeach}    ENTER
     Sleep    15
     Capture Page Screenshot    Vagas de ${job}.png
