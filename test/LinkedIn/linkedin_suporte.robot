@@ -1,10 +1,12 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
 *** Variables ***
-${5s}  5
-${10s}  10
-${15s}  15
-${30s}  30
+${job}   Qa
+${2s}    2
+${5s}    5
+${10s}   10
+${15s}   15
+${30s}   30
 
 *** Keywords ***
 
@@ -20,7 +22,7 @@ Obter termo de pesquisa
     ...                Caso o parâmetro ${aspas} seja True, o valor será retornado entre aspas duplas (ex: "QA Analyst").
     ...                Caso seja False (padrão), retorna o termo limpo, sem aspas.
     [Arguments]    ${job}    ${aspas}=False
-    [Tags]    No_Test
+    [Tags]    Ok_Testar    DOC_OK
     ${aspas} =   Convert To Boolean    ${aspas}
     Return From Keyword If    ${aspas}    "${job}"
     Return From Keyword    ${job}
@@ -36,7 +38,7 @@ Quantos elementos
 
 Reducao da tela do navegador
     [Documentation]    Reduz a tela do navegador
-    [Tags]    Reduzir    testar
+    [Tags]    Reduzir    NOK_testar
     [Arguments]   ${Clique}=0
     ${i} =    Set Variable    0
     FOR    ${i}    IN RANGE    ${Clique}
