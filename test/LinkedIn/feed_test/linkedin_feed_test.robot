@@ -2,6 +2,7 @@
 Library    RPA.Browser.Selenium
 Resource   ../linkedin_locator.robot
 resource   ../linkedin_suporte.robot
+Resource   ../resources/keywords_linkedin.robot
 
 
 *** Variables ***
@@ -12,12 +13,7 @@ resource   ../linkedin_suporte.robot
 # | Java Developer | Java Engineer | Java Programmer | Java Software Engineer | Java Software Developer | Java Application Developer | Java Web Developer | Java Backend Developer | Java Frontend Developer | Java Full Stack Developer | Java Mobile Developer | Java Cloud Developer |
 
 
-${cidade}      ''
-${estado}    Rio de Janeiro, 
-${Pais}    Brasil
-${Modalidade}    (Remoto)
-${Local}      ${cidade} ${estado} ${Pais}
-${span_Local_Vaga}      //span[contains(.,'${cidade} ${Pais} ${Modalidade}')]
+
 ${urlJob}    https://www.linkedin.com/jobs/
 
 *** Keywords ***
@@ -26,7 +22,7 @@ ${urlJob}    https://www.linkedin.com/jobs/
 Pesquisar para emprego no Linkedin
     [Documentation]    Pesquisa vagas no LinkedIn com base no termo de cargo desejado 
     ...                e captura a tela dos resultados.
-    [Tags]    Pesquisar_emprego
+    [Tags]    Pesquisar_emprego   OK_Test
     Wait Until Element Is Visible   locator=${p_nome}    timeout=15
     RPA.Browser.Selenium.Go To    ${urlJob}
     
@@ -39,5 +35,6 @@ Pesquisar para emprego no Linkedin
     Sleep    15
     Capture Page Screenshot    Vagas de ${job}.png
 
-Pesquisar de vagas de "${emprego}" no Linkedin
+Pesquisar de vagas de "${emprego}" no "${Local}"
+    [Documentation]    Pesquisa vagas no Linkedin
     No Operation
