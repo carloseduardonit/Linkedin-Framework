@@ -1,5 +1,6 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
+Library    String
 *** Variables ***
 ${job}   Qa
 ${2s}    2
@@ -27,6 +28,17 @@ Obter termo de pesquisa
     Return From Keyword If    ${aspas}    "${job}"
     Return From Keyword    ${job}
 
+Obter termo de Pesquisa de Localização
+    [Documentation]    Retorna o termo de pesquisa de localização para
+    ...    uso no campo de busca do LinkedIn.
+    [Arguments]    ${Cidade}=None    ${Estado}=None    ${Pais}=None
+    [Tags]    OK_Testar    DOC_OK
+    ${Pais} =    Set Variable If    ${Pais}==None    Brasil
+    ${Estado} =    Set Variable If    ${Estado}==None    Rio de Janeiro,
+    ${Cidade} =    Set Variable If    ${Cidade}==None    São Gonçalo,
+    ${localizacao} =    Catenate    SEPARATOR=    ${Cidade}    ${Estado}    ${Pais}
+    ${localizacao} =    Strip string    ${localizacao}
+    Return From Keyword    ${localizacao}
 Quantos elementos 
     [Documentation]    Verifica quantos elementos existem na tela
     [Arguments]    ${elemento}
