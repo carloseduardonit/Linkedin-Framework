@@ -8,10 +8,12 @@ Resource    ../test/LinkedIn/jobs_test/linkedin_jobs_test.robot
 Resource    ../test/LinkedIn/minhaRede_test/linkedin_myNetWork_test.robot
 *** Variables ***
 
-${cidade}      São Paulo, 
+${cidade}      None
+${estado}    Rio de Janeiro, 
 ${Pais}    Brasil
 ${Modalidade}    (Remoto)
-${span_Local_Vaga}      //span[contains(.,'${cidade} ${Pais} ${Modalidade}')]
+${Local}      ${cidade} ${estado} ${Pais}
+${span_Local_Vaga}      //span[contains(.,'${cidade} ${estado} ${Pais} ${Modalidade}')]
 ${urlJob}    https://www.linkedin.com/jobs/
 ${urlMinhaRede}    https://www.linkedin.com/mynetwork/grow/
 
