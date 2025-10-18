@@ -2,7 +2,6 @@
 *** Settings ***
 Resource   linkedin_candidatura.robot
 
-
 *** Keywords ***
 Acesso as vagas
     [Documentation]    Acessa a listagem de vagas da página atual 
