@@ -2,10 +2,6 @@
 *** Settings ***
 Variables   ../LinkedIn/linkedin.py
 *** Variables ***
-# cartaosVagas =   ("//li[contains(@class,'list-item')]")
-# va = ("//div[@data-view-name='job-card']")
-
-
 # tela de login
 ${campo_login}       //input[@id='username']
 ${campo_senha}      //input[@id='password']
