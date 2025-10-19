@@ -72,10 +72,19 @@ Com ele, é possível:
 ---
 Linkedin-Framework/
 │
+├── resources/ # Arquivos de recursos e variáveis
+│   ├── keywords.robot # Palavras-chave reutilizáveis
+│   └── dependencies.robot # Dependências e bibliotecas
 ├── tests/
-│ ├── login.robot # Caso de teste para login automatizado
+│ ├── Gupy/ # Casos de teste para Gupy
+│ | ├── Gupy_Login_test.robot # Caso de teste para login automatizado
+│ ├── Linkedin/ # Casos de teste para LinkedIn
+
+│   ├── Linkedin_Login/ # Caso de teste para login automatizado
+│   │ ├── Linkedin_Login_test.robot # Caso de teste para login automatizado
+|   ├── Linkedin_Candidatura/ # Caso de teste para candidatura automática
 │ ├── candidatura.robot # Caso de teste para candidatura automática
-│ └── resources/ # Arquivos de recursos e variáveis
+│ └── 
 │
 ├── results/
 │ ├── log.html # Logs de execução
@@ -85,7 +94,6 @@ Linkedin-Framework/
 │ └── chromedriver.exe # Driver de automação
 │
 ├── .gitignore
-├── requirements.txt
 └── README.md
 
 ## ⚙️ Instalação e Configuração
