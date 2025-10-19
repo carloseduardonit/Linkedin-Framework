@@ -32,31 +32,40 @@ Com ele, é possível:
 
 ## 🗂️ Estrutura do Projeto
 
-Linkedin-Framework/
-│
-├── resources/ # Arquivos de recursos e variáveis
-│   ├── keywords.robot # Palavras-chave reutilizáveis
-│   └── dependencies.robot # Dependências e bibliotecas
-├── tests/
-│ ├── Gupy/ # Casos de teste para Gupy
-│ | ├── Gupy_Login_test.robot # Caso de teste para login automatizado
-│ ├── Linkedin/ # Casos de teste para LinkedIn
+📦Linkedin-Framework
+ ┣ 📂.git # Controle de versão
+ ┣ 📂.venv # Ambiente virtual
+ ┣ 📂.vscode # Configurações do Visual Studio Code
+ ┣ 📂resources # Arquivos de recursos e variáveis
+ ┃ ┣ 📜dependencies.txt # Dependências e bibliotecas
+ ┃ ┗ 📜keywords_linkedin.robot # Palavras-chave para login e candidatura
+ ┣ 📂test # Casos de teste
+ ┃ ┣ 📂Gupy 
+ ┃ ┃ ┗ 📜linkedin_candidatura_gupy.robot 
+ ┃ ┗ 📂LinkedIn
+ ┃ ┃ ┣ 📂feed_test
+ ┃ ┃ ┃ ┗ 📜linkedin_feed_test.robot
+ ┃ ┃ ┣ 📂jobs_test
+ ┃ ┃ ┃ ┣ 📜linkedin_candidatura.robot
+ ┃ ┃ ┃ ┣ 📜linkedin_candidatura_simplificada.robot
+ ┃ ┃ ┃ ┣ 📜linkedin_jobs_test.robot
+ ┃ ┃ ┃ ┗ 📜linkedin_questoes.robot
+ ┃ ┃ ┣ 📂login_test
+ ┃ ┃ ┃ ┗ 📜linkedin_login_test.robot
+ ┃ ┃ ┣ 📂minhaRede_test
+ ┃ ┃ ┃ ┗ 📜linkedin_myNetWork_test.robot
+ ┃ ┃ ┣ 📜linkedin.py
+ ┃ ┃ ┣ 📜linkedin_locator.robot
+ ┃ ┃ ┣ 📜linkedin_suporte.robot
+ ┃ ┃ ┗ 📜linkedin_test.robot
+ ┣ 📜.gitignore
+ ┣ 📜CONTRIBUTING.md
+ ┣ 📜iniciar_linkedin_automatizado.bat
+ ┣ 📜log.html
+ ┣ 📜output.xml
+ ┣ 📜ReadMe.md
+ ┗ 📜report.html
 
-│   ├── Linkedin_Login/ # Caso de teste para login automatizado
-│   │ ├── Linkedin_Login_test.robot # Caso de teste para login automatizado
-|   ├── Linkedin_Candidatura/ # Caso de teste para candidatura automática
-│ ├── candidatura.robot # Caso de teste para candidatura automática
-│ └── 
-│
-├── results/
-│ ├── log.html # Logs de execução
-│ ├── report.html # Relatórios de testes
-│
-├── drivers/
-│ └── chromedriver.exe # Driver de automação
-│
-├── .gitignore
-└── README.md
 
 ---
 
@@ -78,5 +87,5 @@ pip install -r requirements.txt
 
 Carlos Eduardo dos Santos Figueiredo
 💼 QA Engineer | Salesforce | Robot Framework | Automação de Testes
-📧 LinkedIn
-🌐 GitHub
+📧 [LinkedIn](https://www.linkedin.com/in/carlos-eduardo-dos-santos-figueiredo-123456789/)
+🌐 [GitHub](https://github.com/carloseduardonit)
