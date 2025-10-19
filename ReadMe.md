@@ -38,6 +38,7 @@ Com ele, é possível:
 ├── 📂 resources/
 │   ├── 📄 dependencies.txt # Lista de dependências e bibliotecas necessárias
 │   └── 📄 keywords_linkedin.robot # Keywords personalizadas para login e candidatura
+│
 ├── 📂 test/
 │   ├── 📂 Gupy/
 │   │   └── 📄 linkedin_candidatura_gupy.robot # Teste de candidatura automática para a plataforma Gupy
@@ -57,6 +58,7 @@ Com ele, é possível:
 │       ├── 📄 linkedin_locator.robot # Locators e seletores para elementos do LinkedIn
 │       ├── 📄 linkedin_suporte.robot # Testes de suporte ou funções auxiliares
 │       └── 📄 linkedin_test.robot # Testes gerais ou de integração do LinkedIn
+|
 ├── 📂 drivers/
 │   └── 📄 chromedriver.exe # Driver de automação
 ├── 📄 .gitignore # Arquivos e pastas ignorados pelo Git
