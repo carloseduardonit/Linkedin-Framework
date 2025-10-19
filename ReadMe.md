@@ -67,6 +67,7 @@ Com ele, é possível:
 ├── 📄 ReadMe.md # Documentação principal do projeto
 └── 📄 report.html # Relatório resumido dos testes executados
 
+---
 
 ## ⚙️ Instalação e Configuração
 
