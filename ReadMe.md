@@ -33,6 +33,7 @@ Com ele, é possível:
 ## 🗂️ Estrutura do Projeto
 
 📦 Linkedin-Framework
+|
 ├── 📂 .git # Controle de versão do projeto
 ├── 📂 resources/ # Arquivos de recursos e variáveis reutilizáveis
 │   ├── 📄 dependencies.txt # Lista de dependências e bibliotecas necessárias
@@ -84,6 +85,6 @@ pip install -r requirements.txt
 👨‍💻 Autor
 
 Carlos Eduardo dos Santos Figueiredo
-💼 QA Engineer | Salesforce | Robot Framework | Automação de Testes
+💼 QA Engineer | Salesforce | Robot Framework | Automação de Testes |
 📧 [LinkedIn](https://www.linkedin.com/in/carlos-eduardo-dos-santos-figueiredo-123456789/)
 🌐 [GitHub](https://github.com/carloseduardonit)
