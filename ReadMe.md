@@ -1,10 +1,10 @@
 # 🤖 LinkedIn Framework
+## Sobre o Projeto
 
 Automação inteligente para **login e candidaturas no LinkedIn**, desenvolvida com o poder do **Robot Framework**.  
 Este projeto foi criado com foco em **testes de automação, produtividade e aprendizado prático**, servindo também como um exemplo real de aplicação profissional do Robot Framework em cenários web.
 
 ---
-
 ## 🚀 Objetivo do Projeto
 
 O **LinkedIn Framework** tem como principal objetivo **automatizar o processo de login e envio de candidaturas no LinkedIn**, reduzindo o tempo gasto em tarefas repetitivas e melhorando a eficiência nas buscas por oportunidades.
@@ -17,7 +17,6 @@ Com ele, é possível:
 - Servir como base para **testes web** utilizando boas práticas de QA.
 
 ---
-
 ## 🧠 Tecnologias e Ferramentas Utilizadas
 
 | Tecnologia | Descrição |
@@ -29,7 +28,6 @@ Com ele, é possível:
 | 🧪 **Robot Framework Browser / BuiltIn Libraries** | Extensões para controle avançado e logs. |
 
 ---
-
 ## 🗂️ Estrutura do Projeto
 ```
 📦 Linkedin-Framework/
@@ -78,7 +76,6 @@ Com ele, é possível:
 - **iniciar_linkedin_automatizado.bat**: Script para iniciar a automação de testes de forma simples.
 - **log.html** e **report.html**: Arquivos gerados após a execução dos testes, contendo logs detalhados e relatórios resumidos.
 ---
-
 ## ⚙️ Instalação e Configuração
 
 ### 🔹 Pré-requisitos
@@ -86,8 +83,10 @@ Com ele, é possível:
 - **Python 3.9+**
 - **Google Chrome** (ou Firefox)
 - **ChromeDriver** compatível com a versão do navegador
-- **Robot Framework**
-
+- **Robot Framework** instalado globalmente:
+```bash
+pip install robotframework
+```
 ### 🔹 Instalação das dependências
 
 ```bash
