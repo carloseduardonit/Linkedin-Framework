@@ -31,7 +31,7 @@ Com ele, é possível:
 ---
 
 ## 🗂️ Estrutura do Projeto
-
+```
 📦 Linkedin-Framework/
 |
 ├── 📂 .git/
@@ -68,8 +68,10 @@ Com ele, é possível:
 ├── 📄 output.xml # Arquivo de saída com resultados em XML
 ├── 📄 ReadMe.md # Documentação principal do projeto
 └── 📄 report.html # Relatório resumido dos testes executados
-
+```
 ---
+## 📁 Estrutura Detalhada do Projeto
+
 Linkedin-Framework/
 │
 ├── resources/ # Arquivos de recursos e variáveis
