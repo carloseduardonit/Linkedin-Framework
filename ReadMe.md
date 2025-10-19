@@ -34,11 +34,11 @@ Com ele, é possível:
 
 📦 Linkedin-Framework
 |
-├── 📂 .git # Controle de versão do projeto
-├── 📂 resources/ # Arquivos de recursos e variáveis reutilizáveis
+├── 📂 .git/
+├── 📂 resources/
 │   ├── 📄 dependencies.txt # Lista de dependências e bibliotecas necessárias
 │   └── 📄 keywords_linkedin.robot # Keywords personalizadas para login e candidatura
-├── 📂 test/ # Casos de teste automatizados
+├── 📂 test/
 │   ├── 📂 Gupy/
 │   │   └── 📄 linkedin_candidatura_gupy.robot # Teste de candidatura automática para a plataforma Gupy
 │   └── 📂 LinkedIn/
