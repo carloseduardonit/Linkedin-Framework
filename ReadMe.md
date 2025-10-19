@@ -32,7 +32,7 @@ Com ele, é possível:
 
 ## 🗂️ Estrutura do Projeto
 
-📦 Linkedin-Framework
+📦 Linkedin-Framework/
 |
 ├── 📂 .git/
 ├── 📂 resources/
