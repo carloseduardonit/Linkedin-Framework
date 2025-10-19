@@ -1,4 +1,3 @@
-
 *** Settings ***
 Resource   linkedin_candidatura.robot
 
@@ -45,6 +44,14 @@ Acessar o cartao da Vaga
     Manipular Element    ${item}
     Capture Element Screenshot    locator=${conteudo}   filename=O conteudo da vaga na ${Pagina}º pagina na posição ${${numero_item}+1}º das vagas.png
 
+Candidatar e fechar ao processo extensivo 
+    Candidatar ao processo extensivo
+    Sleep    ${5s}
+    Capture Page Screenshot   Candidatura finalizada com sucesso p${Pagina} v.png
+    Manipular Element   ${botao_concluirCandidatura}
+    Manipular Element   ${botao_finalizarCandidatura}
+    Sleep    ${5s}
+
 Candidatar ao processo extensivo
     [Documentation]    Realiza a candidatura automática em um processo seletivo com etapas progressivas.
     ...                Essa keyword verifica se a barra de progresso da candidatura está visível.
@@ -64,7 +71,6 @@ Candidatar ao processo extensivo
             Manipular Element   ${botao_avancarCandidatura} 
             Manipular Element   ${botao_revisarCandidatura}
             Manipular Element   ${botao_enviarCandidatura}           
-            
             Sleep    ${5s}
             IF   not ${progresso_valor}
                 BREAK
@@ -72,11 +78,7 @@ Candidatar ao processo extensivo
             ${progresso_valor} =    Obter valor do progresso
         END 
     END
-    Manipular Element   ${botao_concluirCandidatura}
-    Manipular Element   ${botao_finalizarCandidatura}
-    Capture Page Screenshot   Candidatura finalizada.png
-    Sleep    ${5s}
-
+   
 Candidatar ao processo simples
     [Documentation]    Realiza a candidatura simples quando não há barra de progresso visível.
     ...                Essa keyword assume que o processo é direto e sem etapas intermediárias.
@@ -120,7 +122,7 @@ Faça a Candidatura da vaga simplificada
         Manipular Element    ${botao_iniciarCandidaturaVagaSimplificada}
         Remover aviso de segurança
         Candidatar ao processo simples
-        Candidatar ao processo extensivo
+        Candidatar e fechar ao processo extensivo
         Sleep    ${10s}
     END
 
