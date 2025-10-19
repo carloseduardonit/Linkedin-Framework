@@ -72,31 +72,12 @@ Com ele, é possível:
 ---
 ## 📁 Estrutura Detalhada do Projeto
 
-Linkedin-Framework/
-│
-├── resources/ # Arquivos de recursos e variáveis
-│   ├── keywords.robot # Palavras-chave reutilizáveis
-│   └── dependencies.robot # Dependências e bibliotecas
-├── tests/
-│ ├── Gupy/ # Casos de teste para Gupy
-│ | ├── Gupy_Login_test.robot # Caso de teste para login automatizado
-│ ├── Linkedin/ # Casos de teste para LinkedIn
-
-│   ├── Linkedin_Login/ # Caso de teste para login automatizado
-│   │ ├── Linkedin_Login_test.robot # Caso de teste para login automatizado
-|   ├── Linkedin_Candidatura/ # Caso de teste para candidatura automática
-│ ├── candidatura.robot # Caso de teste para candidatura automática
-│ └── 
-│
-├── results/
-│ ├── log.html # Logs de execução
-│ ├── report.html # Relatórios de testes
-│
-├── drivers/
-│ └── chromedriver.exe # Driver de automação
-│
-├── .gitignore
-└── README.md
+- **resources/**: Contém recursos compartilhados, como keywords personalizadas e listas de dependências.
+- **test/**: Diretório principal dos casos de teste, organizado em subdiretórios por funcionalidade (login, vagas, feed, etc.).
+- **drivers/**: Armazena os drivers necessários para a automação dos navegadores.
+- **iniciar_linkedin_automatizado.bat**: Script para iniciar a automação de testes de forma simples.
+- **log.html** e **report.html**: Arquivos gerados após a execução dos testes, contendo logs detalhados e relatórios resumidos.
+---
 
 ## ⚙️ Instalação e Configuração
 
@@ -112,9 +93,9 @@ Linkedin-Framework/
 ```bash
 pip install -r requirements.txt
 ```
-👨‍💻 Autor
+--- 
+## 💻 Autor
 
 Carlos Eduardo dos Santos Figueiredo
-💼 QA Engineer | Salesforce | Robot Framework | Automação de Testes |
-📧 [LinkedIn](https://www.linkedin.com/in/carlos-eduardo-dos-santos-figueiredo-123456789/)
-🌐 [GitHub](https://github.com/carloseduardonit)
+- QA Engineer | Salesforce | Robot Framework | Automação de Testes |
+- 📧 [LinkedIn](https://www.linkedin.com/in/carlos-eduardo-dos-s-figueiredo/)🌐 [GitHub](https://github.com/carloseduardonit)
