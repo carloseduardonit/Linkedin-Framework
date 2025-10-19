@@ -2,9 +2,11 @@
 *** Settings ***
 Variables   ../LinkedIn/linkedin.py
 *** Variables ***
-# tela de login
+
+# Campos da tela de login
 ${campo_login}       //input[@id='username']
 ${campo_senha}      //input[@id='password']
+# Botao de submit da tela de login
 ${botao_submit}    //button[contains(@type,'submit')]
 
 # Campos de pesquisas
@@ -12,10 +14,12 @@ ${botao_submit}    //button[contains(@type,'submit')]
 ${campoSeach}   //input[contains(@placeholder,'Cargo, competência ou empresa')]
 ${campoLocal}   //input[contains(@placeholder,"Cidade, estado ou código postal")]
 
-# Paragrafo
+# Paragrafo do Feed
 ${p_nome}      //p[contains(.,'${name}')]
-# Titulos
+# Titulos do Feed
 ${h3_nome}      //h3[contains(.,'${name}')]
+
+# Titulo da pagina de Vagas inicial
 #${h2_title}    //h2[contains(.,'Conheça as oportunidades')]
 #${h2_title}    //h2[contains(.,'Vagas selecionadas para você')]
 #${h2_title}    //h2[contains(.,'Encontre seu próximo cargo')]
@@ -42,7 +46,6 @@ ${botao_finalizarCandidatura}  //button[@class='artdeco-button artdeco-button--c
 ${botao_avançarPaginaCartao}    //button[@aria-label='Ver próxima página'][contains(.,'Avançar')]
 
 # Variaveis de controle
-
 ${progresso_valor}  0
 ${contador}  -1
 ${contador_vaga}  0
@@ -65,6 +68,7 @@ ${combo.homeOffice}    (//input[contains(@name,'remoto-filter-value')])[1]
 
 # link
 ${link_Visulizar}     //a[contains(@class,'jobs-s-apply__application-link display-flex align-items-center ember-view')]
+
 *** Keywords ***
 gerar path do item
     [Arguments]    ${numero_item}   ${std}=None

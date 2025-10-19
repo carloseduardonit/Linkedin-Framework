@@ -5,7 +5,7 @@ Library     String
 Library    RPA.Smartsheet
 Resource    ../linkedin_locator.robot
 Resource    ../linkedin_suporte.robot
-Resource    linkedin_candidatura_gupy.robot
+Resource    ../test/Gupy/linkedin_candidatura_gupy.robot
 Resource    linkedin_candidatura_simplificada.robot
 Resource    linkedin_questoes.robot
 *** Variables ***

@@ -1,5 +1,5 @@
 *** Settings ***
-Resource  linkedin_candidatura.robot
+Resource  ../test/LinkedIn/jobs_test/linkedin_candidatura.robot
 *** Keywords ***
 Gerar Link da Gupy
    [Documentation]    Copia o link da vaga e verifica se pertence à Gupy (contém 'gupy.io').

@@ -6,6 +6,7 @@ Resource    ../test/LinkedIn/login_test/linkedin_login_test.robot
 Resource    ../test/LinkedIn/feed_test/linkedin_feed_test.robot
 Resource    ../test/LinkedIn/jobs_test/linkedin_jobs_test.robot
 Resource    ../test/LinkedIn/minhaRede_test/linkedin_myNetWork_test.robot
+Resource    ../test/Gupy/linkedin_candidatura_gupy.robot
 *** Variables ***
 
 ${cidade}      None
