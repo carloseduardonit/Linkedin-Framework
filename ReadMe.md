@@ -68,6 +68,23 @@ Com ele, é possível:
 └── 📄 report.html # Relatório resumido dos testes executados
 
 ---
+Linkedin-Framework/
+│
+├── tests/
+│ ├── login.robot # Caso de teste para login automatizado
+│ ├── candidatura.robot # Caso de teste para candidatura automática
+│ └── resources/ # Arquivos de recursos e variáveis
+│
+├── results/
+│ ├── log.html # Logs de execução
+│ ├── report.html # Relatórios de testes
+│
+├── drivers/
+│ └── chromedriver.exe # Driver de automação
+│
+├── .gitignore
+├── requirements.txt
+└── README.md
 
 ## ⚙️ Instalação e Configuração
 
