@@ -62,14 +62,14 @@ Candidatar ao processo extensivo
     ...                - Enquanto progresso < 100, aciona botões de avanço
     ...                - Finaliza a candidatura e captura evidência visual
     [Tags]    Linkedin    OK     DOC_OK
-
+    ${progresso_valor} =    Obter valor do progresso
     ${resposta} =  Is Element Visible   ${path_progresso}
     IF  ${resposta}
-        ${progresso_valor} =    Obter valor do progresso
-        WHILE    ${progresso_valor} < 100.00
-            ${progresso_valor} =    Obter valor do progresso
-            Manipular Element   ${botao_avancarCandidatura} 
-            Manipular Element   ${botao_revisarCandidatura}
+        WHILE    ${progresso_valor} < 100
+            Log To Console    \nProgresso atual: ${progresso_valor}%            #${progresso_valor} =    Obter valor do progresso
+            Responder as questoes do formulario
+            Manipular Element   ${botao_avancarCandidatura}             
+            Manipular Element   ${botao_revisarCandidatura}            
             Manipular Element   ${botao_enviarCandidatura}           
             Sleep    ${5s}
             IF   not ${progresso_valor}
