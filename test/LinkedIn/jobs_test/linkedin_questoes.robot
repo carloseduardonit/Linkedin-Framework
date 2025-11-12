@@ -35,8 +35,11 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 ...            ${q10}    ${q11}    ${q12}
 
 *** Keywords ***
+Responder as questoes do formulario
+    ${total_questoes}=    quantas questões existem?
+    Log to console   total de questões a responder: ${total_questoes}
 Gerar patch para pergunta "${pergunta}"
-    [Tags]     No_Test
+    [Tags]     No_Test    Logica_test
     ${patch}=  //label[contains(.,'${pergunta}')]
     RETURN    ${patch}
 
@@ -97,10 +100,26 @@ Não preencher resposta obrigatória?
     ${resposta2}=     Should Contain   ${texto}    Enter a whole number between 0 and 99
     RETURN    ${resposta1} or ${resposta2}
 
-quantas questões existem?
+quantas questões existem com input?
     [Tags]    No_Test
     ${questoes_xpath}=    Set Variable    //label[contains(@class,"artdeco-text-input--label")]
     ${questoes}=    Get WebElements    ${questoes_xpath}
     ${total}=    Get Length    ${questoes}
+    Log To Console    Total de questões com input: ${total}
+    RETURN    ${total}
+
+quantas questões existem com select?
+    [Tags]    No_Test
+    ${questoes_xpath}=    Set Variable    //label[contains(@class,"fb-dash-form-element__label")]
+    ${questoes}=    Get WebElements    ${questoes_xpath}
+    ${total}=    Get Length    ${questoes}
+    Log To Console    Total de questões com select: ${total}
+    RETURN    ${total}
+
+quantas questões existem?
+    [Tags]    No_Test
+    ${questoes_input}=   quantas questões existem com input?
+    ${questoes_select}=  quantas questões existem com select?
+    ${total}=    Evaluate    ${questoes_input} + ${questoes_select}
     Log To Console    Total de questões: ${total}
     RETURN    ${total}
