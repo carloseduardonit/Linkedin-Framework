@@ -89,8 +89,12 @@ Scroll E Clica No Elemento
     Execute Javascript
     ...    var el = document.evaluate("${item_xpath}", document, null, XPathResult.FIRST_ORDERED_NODE_TYPE, null).singleNodeValue;
     ...    if (el) { el.scrollIntoView({block: "center"}); }
-    Wait Until Element Is Visible    ${item_xpath}    timeout=10s
-    Manipular Element  ${item_xpath}
+    ${IsVisible}=  Is Element Visible    ${item_xpath}    timeout=10s
+    IF  ${IsVisible}
+        Wait Until Element Is Visible    ${item_xpath}    timeout=10s
+        Manipular Element    ${item_xpath}
+    END
+    
 
 
 Qual e pagina atual?
