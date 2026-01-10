@@ -62,7 +62,7 @@ Candidatar ao processo extensivo
     ...                - Enquanto progresso < 100, aciona botões de avanço
     ...                - Finaliza a candidatura e captura evidência visual
     [Tags]    Linkedin    OK     DOC_OK
-    ${progresso_valor} =    Obter valor do progresso
+    ${progresso_valor} =     Obter valor do progresso 
     ${resposta} =  Is Element Visible   ${path_progresso}
     IF  ${resposta}
         WHILE    ${progresso_valor} < 100
@@ -71,7 +71,7 @@ Candidatar ao processo extensivo
             Manipular Element   ${botao_avancarCandidatura}             
             Manipular Element   ${botao_revisarCandidatura}            
             Manipular Element   ${botao_enviarCandidatura}           
-            Sleep    ${5s}
+            Sleep    ${5s}           
             IF   not ${progresso_valor}
                 BREAK
             END
@@ -106,7 +106,7 @@ Clique na filtragem da Candidatura simplificada
     ELSE
         Log    message=Botão de filtragem para vaga simplificada não encontrado
     END
-    Sleep   ${10s}
+    Sleep   ${5s}
     Capture Page Screenshot     Vagas de ${job} no modelo de vaga simplificada.png
 
 Faça a Candidatura da vaga simplificada
@@ -123,7 +123,7 @@ Faça a Candidatura da vaga simplificada
         Remover aviso de segurança
         Candidatar ao processo simples
         Candidatar e fechar ao processo extensivo
-        Sleep    ${10s}
+        Sleep    ${5s}
     END
 
 Obter valor do progresso
@@ -134,6 +134,8 @@ Obter valor do progresso
     IF  ${resposta}
         ${progresso_valor} =    Get Element Attribute    ${path_progresso}    value
         ${progresso_valor} =    Convert To Number   ${progresso_valor}
+        # Tratamento para valores nulos ou zero
+        Return from keyword if   ${progresso_valor} == 0  0.01
         Return From Keyword    ${progresso_valor}
     ELSE
         Return From Keyword    ${resposta}
