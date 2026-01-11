@@ -101,7 +101,10 @@ Não preencher resposta obrigatória?
     RETURN    ${resposta1} or ${resposta2}
 
 quantas questões existem com input?
-    [Tags]    No_Test
+    [Documentation]    Retorna o total de questões presentes no formulário de candidatura que utilizam campos do tipo input.
+     ...               Essa keyword localiza todos os elementos de label associados a campos input,
+     ...               conta quantos foram encontrados e retorna esse número.
+    [Tags]    Test
     ${questoes_xpath}=    Set Variable    //label[contains(@class,"artdeco-text-input--label")]
     ${questoes}=    Get WebElements    ${questoes_xpath}
     ${total}=    Get Length    ${questoes}
@@ -109,7 +112,10 @@ quantas questões existem com input?
     RETURN    ${total}
 
 quantas questões existem com select?
-    [Tags]    No_Test
+    [Documentation]    Retorna o total de questões presentes no formulário de candidatura que utilizam campos do tipo select.
+     ...               Essa keyword localiza todos os elementos de label associados a campos select,
+     ...               conta quantos foram encontrados e retorna esse número.
+    [Tags]    Test
     ${questoes_xpath}=    Set Variable    //label[contains(@class,"fb-dash-form-element__label")]
     ${questoes}=    Get WebElements    ${questoes_xpath}
     ${total}=    Get Length    ${questoes}
@@ -117,7 +123,9 @@ quantas questões existem com select?
     RETURN    ${total}
 
 quantas questões existem?
-    [Tags]    No_Test
+    [Documentation]    Retorna o total de questões presentes no formulário de candidatura.
+     ...                Soma o número de questões com campos de input e select.
+    [Tags]    Test
     ${questoes_input}=   quantas questões existem com input?
     ${questoes_select}=  quantas questões existem com select?
     ${total}=    Evaluate    ${questoes_input} + ${questoes_select}
