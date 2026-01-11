@@ -66,7 +66,8 @@ Candidatar ao processo extensivo
     ${resposta} =  Is Element Visible   ${path_progresso}
     IF  ${resposta}
         WHILE    ${progresso_valor} < 100
-            Log To Console    \nProgresso atual: ${progresso_valor}%            #${progresso_valor} =    Obter valor do progresso
+            ${valor} =  Convert to number    ${progresso_valor}         2
+            Log To Console    \nProgresso atual: ${valor} %            #${progresso_valor} =    Obter valor do progresso
             Responder as questoes do formulario
             Manipular Element   ${botao_avancarCandidatura}             
             Manipular Element   ${botao_revisarCandidatura}            
@@ -101,7 +102,7 @@ Clique na filtragem da Candidatura simplificada
     [Tags]    button    OK
     ${Resposta} =  Is Element Visible   locator=${botao_filtragemVagaSimplificada}
     IF   ${Resposta}
-        Wait Until Element Is Visible    locator=${botao_filtragemVagaSimplificada}   timeout=150
+        Wait Until Element Is Visible    locator=${botao_filtragemVagaSimplificada}   timeout=90
         Click Button  ${botao_filtragemVagaSimplificada}
     ELSE
         Log    message=Botão de filtragem para vaga simplificada não encontrado
@@ -127,7 +128,8 @@ Faça a Candidatura da vaga simplificada
     END
 
 Obter valor do progresso
-    [Documentation]    Obtém o valor atual da barra de progresso, se visível.
+    [Documentation]    Obtém o valor atual da barra de progresso, se visível
+    ...                Ou nao esta visivel.
     [Tags]    Validação    OK
     
     ${resposta} =  Is Element Visible   ${path_progresso}
