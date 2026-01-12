@@ -107,3 +107,10 @@ pip install -r requirements.txt
 Carlos Eduardo dos Santos Figueiredo
 - QA Engineer | Salesforce | Robot Framework | Automação de Testes |
 - 📧 [LinkedIn](https://www.linkedin.com/in/carlos-eduardo-dos-s-figueiredo/)🌐 [GitHub](https://github.com/carloseduardonit)
+
+## Material de apoio
+- [Documentação Oficial do Robot Framework](https://robotframework.org/)   
+- [Documentação Oficial do SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
+- [Documentação Oficial do RPA.Browser.Selenium]( https://robocorp.com/docs/libraries/rpa-framework/rpa-browser-selenium)
+- [Documentação Oficial do Robot Framework Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
+- [Documentação Oficial do Python](https://docs.python.org/3/)
