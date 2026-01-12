@@ -30,13 +30,48 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 ...      resposta=Sim
 &{q12}   pergunta=Você possui alguma experiência anterior na área?
 ...      resposta=Não
+&{q13}   pergunta=Você possui experiência em testes manuais?
+...      resposta=Yes
+&{q14}    pergunta=Você possui disponibilidade para atuação presencial em Maringá/ PR? Requisito obrigatório e indispensável
+...       resposta=No
+&{q15}    pergunta=Você possui experiência em testes automatizados?
+...       resposta=No 
+&{q16}    pergunta=Você possui conhecimento de metodologias ágeis (Scrum, Kanban)?
+...       resposta=Yes
+&{q17}    pergunta=Você possui experiência com ferramentas de gerenciamento de testes?
+...       resposta=Yes
+&{q18}    pergunta=Você possui familiaridade com banco de dados e execução de queries (SQL)?
+...       resposta=Yes
+&{q19}    pergunta=Você possui conhecimento em Java (diferencial)?
+...       resposta=Yes  
+&{q20}    pergunta=Você possui conhecimento em React e Angular?
+...       resposta=No
 
-@{gestoes}     ${q00}    ${q01}    ${q02}    ${q03}    ${q04}    ${q05}    ${q06}    ${q07}    ${q08}    ${q09}    
-...            ${q10}    ${q11}    ${q12}
+@{questoes}     ${q00}    ${q01}    ${q02}    ${q03}    ${q04}    ${q05}    ${q06}    ${q07}    ${q08}    ${q09}    
+...             ${q10}    ${q11}    ${q12}    ${q13}    ${q14}    ${q15}    ${q16}    ${q17}    ${q18}    ${q19}    
+...             ${q20}
 
 *** Keywords ***
 Responder as questoes do formulario
     ${total_questoes}=    quantas questões existem?
+    FOR    ${questao}    IN    @{questoes}
+        ${pergunta}=    Set Variable    ${questao['pergunta']}
+        ${resposta}=    Set Variable    ${questao['resposta']}
+        Log to console   Pergunta: ${pergunta}  - Resposta: ${resposta}
+        ${quantidade_input}=    quantas questões existem com input?
+        ${temInput}=    run keyword and return status  Should be equal as integers    ${quantidade_input}    0
+        ${quantidade_select}=    quantas questões existem com select?
+        ${temSelect}=  Run keyword and return status  Should be equal as integers    ${quantidade_select}    0
+
+        IF    not ${temInput}
+            #teste questão de input   ${pergunta}   ${resposta}
+            No operation
+        END
+        IF   not ${temSelect}
+            Preenchimento da questão de select   ${pergunta}   ${resposta}
+        END
+                
+    END
     Log to console   total de questões a responder: ${total_questoes}
 Gerar patch para pergunta "${pergunta}"
     [Tags]     No_Test    Logica_test
@@ -53,21 +88,17 @@ Gerar patch para resposta "${resposta}"
     END
     RETURN    ${patch}
 
-Preencher Formulário
-    [Tags]    No_Test
-    [Arguments]    ${gestoes}
-    ${formulario}=    Create Dictionary
-    No Operation
 
-Preencher a questão
-    [Tags]    No_Test
-    [Arguments]    ${pergunta}    ${resposta}
-    No Operation
 
-Validar se a questão existe
+
+
+Validar se a questão existe na tela?
+    [Documentation]   Valida se a questão está visível na tela.
+     ...              Compara a pergunta vinda do dicionário com a pergunta exibida na tela.
     [Tags]    No_Test
-    [Arguments]    ${pergunta}
-    No Operation
+    [Arguments]    ${perguntaDicionario}   ${PerguntaTela}
+    ${Resultado}=  Should Contain    ${perguntaDicionario}    ${PerguntaTela}
+    Return ${Resultado}
 
 teste questão de input
     [Tags]    No_Test
@@ -76,12 +107,14 @@ teste questão de input
     Input Text   ${xpath}    ${resposta}
     Sleep    2s
 
-teste questão de select
-    [Tags]    No_Test
+Preenchimento da questão de select
+    [Documentation]    Responsavel  pela preenchimento com Select  e Option
+    [Tags]    Test
     [Arguments]    ${pergunta}   ${resposta}
-    ${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::select
-    Select From List By Label   ${xpath}    ${resposta}
-    Sleep    2s
+    ${xpath}=  Set Variable    //span[@aria-hidden='true'][contains(normalize-space(.),'${pergunta}')]/following::select[1]
+    #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::select
+    Run Keyword And Ignore Error   Select From List By Label   ${xpath}    ${resposta}
+    Sleep    1s
 
 Não selecionar resposta obrigatória?
     [Tags]    No_Test
@@ -108,7 +141,7 @@ quantas questões existem com input?
     ${questoes_xpath}=    Set Variable    //label[contains(@class,"artdeco-text-input--label")]
     ${questoes}=    Get WebElements    ${questoes_xpath}
     ${total}=    Get Length    ${questoes}
-    Log To Console    Total de questões com input: ${total}
+    # Log To Console    Total de questões com input: ${total}
     RETURN    ${total}
 
 quantas questões existem com select?
@@ -119,7 +152,7 @@ quantas questões existem com select?
     ${questoes_xpath}=    Set Variable    //label[contains(@class,"fb-dash-form-element__label")]
     ${questoes}=    Get WebElements    ${questoes_xpath}
     ${total}=    Get Length    ${questoes}
-    Log To Console    Total de questões com select: ${total}
+    # Log To Console    Total de questões com select: ${total}
     RETURN    ${total}
 
 quantas questões existem?
