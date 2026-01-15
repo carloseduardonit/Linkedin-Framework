@@ -1,21 +1,12 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
+Resource    questionarios.robot
 *** Variables ***
 ${pergunta}=   //label[contains(.,'Como esta sua expectativa de valor no CLT?')]
 ${input_resposta}=  //input[contains(@class,'error-field artdeco-text-input--input')]
 ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-list-form-component-formElement-urn-li-jobs-applyformcommon-easyApplyFormElement-4243028816-20049339042-multipleChoice-error')]
-&{q00}    pergunta=modelo
-...       resposta=Modelo de Resposta
-&{q01}    pergunta=For how long have you worked as a Tester?     
-...       resposta=I have worked as a QA Manual Engineer for 2 years, focusing on manual testing, mobile testing, and accessibility (AX). During this time, I also gained experience using tools like Zephyr and Jira, and I'm currently deepening my knowledge in API testing and test automation with frameworks like Robot.
-&{q02}    pergunta=For how long have you worked with Automation testing?    
-...      resposta=I'm currently gaining experience with automation testing. I've been studying and applying it in personal and training projects using the Robot Framework, focusing on semi-automated testing. While my main background is in manual testing, I'm actively expanding into automation to strengthen my QA skills.
-&{q03}    pergunta=With which QA Automation tools have you worked? Ex. Selenium, Cypress, Cucumber, etc    
-...      resposta=I have worked with the Robot Framework for semi-automated testing, using it mainly in training and personal projects. While I haven't used tools like Selenium or Cypress professionally yet, I have studied their concepts and I'm gradually expanding my knowledge to include these tools as part of my transition into automation testing.
-&{q04}    pergunta=linkedin
-...      resposta=https://www.linkedin.com/in/carlos-eduardo-dos-s-figueiredo/
-&{q05}    pergunta=github
-...      resposta=
+
+
 &{q06}    pergunta=Como ficou sabendo da nossa vaga?
 ...      resposta=LinkedIn
 &{q07}    pergunta=Qual o seu nível de inglês?
@@ -25,32 +16,51 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 &{q09}    pergunta=Você possui alguma deficiência?
 ...      resposta=Não
 &{q10}   pergunta=Qual sua pretensão salarial?
-...      resposta=5000.00
+...      resposta=4000.00 
+&{q10a}   pergunta=Pretensão salarial?
+...      resposta=4000.00
 &{q11}   pergunta=Você tem disponibilidade para trabalhar em horários flexíveis?
 ...      resposta=Sim
 &{q12}   pergunta=Você possui alguma experiência anterior na área?
 ...      resposta=Não
 &{q13}   pergunta=Você possui experiência em testes manuais?
 ...      resposta=Yes
-&{q14}    pergunta=Você possui disponibilidade para atuação presencial em Maringá/ PR? Requisito obrigatório e indispensável
-...       resposta=No
-&{q15}    pergunta=Você possui experiência em testes automatizados?
-...       resposta=No 
-&{q16}    pergunta=Você possui conhecimento de metodologias ágeis (Scrum, Kanban)?
-...       resposta=Yes
-&{q17}    pergunta=Você possui experiência com ferramentas de gerenciamento de testes?
-...       resposta=Yes
-&{q18}    pergunta=Você possui familiaridade com banco de dados e execução de queries (SQL)?
-...       resposta=Yes
-&{q19}    pergunta=Você possui conhecimento em Java (diferencial)?
-...       resposta=Yes  
-&{q20}    pergunta=Você possui conhecimento em React e Angular?
+
+
+
+
+
+&{q30}    pergunta=Possui experiência na realização de testes de performance?
 ...       resposta=No
 
-@{questoes}     ${q00}    ${q01}    ${q02}    ${q03}    ${q04}    ${q05}    ${q06}    ${q07}    ${q08}    ${q09}    
-...             ${q10}    ${q11}    ${q12}    ${q13}    ${q14}    ${q15}    ${q16}    ${q17}    ${q18}    ${q19}    
-...             ${q20}
+&{exp01}    pergunta=Quantos anos de experiência com QA você tem?
+...       resposta= 2
+&{exp02}        pergunta=Current company
+...       resposta= BRQ Solutions
+&{exp03}    pergunta= Confirm the name of the company where you work/ Confirme o nome da empresa em que você trabalha atualmente
+...       resposta= ${exp02['resposta']}
 
+&{loc05}    pergunta=What is your current location?
+...       resposta=São Gonçalo, Rio de Janeiro, Brazil
+&{loc06}     pergunta=Please confirm City, State and Country where you are currently living?
+...       resposta= ${loc05['resposta']}
+#Possui disponibilidade para contrato temporário?
+#Possui inglês fluente?
+#Há quantos anos você já usa JIRA no trabalho?
+&{q14}        pergunta=[EN] What is your level of confidence when communicating and collaborating in an English-speaking work environment?
+...       resposta=Intermediate I. Example: I can participate in meetings, but I partially understand what has been said.
+&{q15}        pergunta=[ES] What is your level of confidence when communicating and collaborating in an Spanish-speaking work environment?
+...       resposta=${q14['resposta']}
+&{q16}      pergunta = How comfortable do you feel working in an English-speaking environment?
+...        resposta=have an intermediate level of English. I am comfortable reading and understanding technical documentation and written communication. In an English-speaking work environment, I can follow meetings, especially on technical topics, but I am still developing my spoken fluency. I am actively working on improving my English to communicate more confidently and effectively.
+
+@{questoes}     ${q00}    ${q01}    ${q02}    ${q03}       ${q06}    ${q07}    ${q08}    ${q09}    
+...             ${q10}    ${q10a}    ${q11}    ${q12}    ${q13}      ${q30}
+...             ${exp01}    ${exp02}   ${exp03}
+...             ${con01}    ${con02}   ${con03}    ${con04}   ${con05}   ${con06}   ${con07}     ${con08}    ${con09}    ${con10}   
+...             ${con11}
+...             ${red01}    ${red02}   ${red03}    ${red04}   ${red05}
+...             ${loc01}    ${loc02}   ${loc03}    ${loc04}    ${loc05}    ${loc06}
 *** Keywords ***
 Responder as questoes do formulario
     ${total_questoes}=    quantas questões existem?
@@ -62,10 +72,11 @@ Responder as questoes do formulario
         ${temInput}=    run keyword and return status  Should be equal as integers    ${quantidade_input}    0
         ${quantidade_select}=    quantas questões existem com select?
         ${temSelect}=  Run keyword and return status  Should be equal as integers    ${quantidade_select}    0
-
-        IF    not ${temInput}
-            #teste questão de input   ${pergunta}   ${resposta}
-            No operation
+        ${temRespostaYes}=  Run keyword and return status    Should be equal as strings    ${resposta}    Yes
+        ${temRespostaNo}=  Run keyword and return status    Should be equal as strings    ${resposta}    No
+        IF    not ${temInput} and not ${temRespostaYes} and not ${temRespostaNo}
+           Preenchimento da questão de input   ${pergunta}   ${resposta}
+          # No operation
         END
         IF   not ${temSelect}
             Preenchimento da questão de select   ${pergunta}   ${resposta}
@@ -100,12 +111,15 @@ Validar se a questão existe na tela?
     ${Resultado}=  Should Contain    ${perguntaDicionario}    ${PerguntaTela}
     Return ${Resultado}
 
-teste questão de input
+Preenchimento da questão de input
+    [Documentation]    Responsavel  pela preenchimento com Input Text
+     ...                Utiliza o xpath da pergunta para localizar o campo de resposta
     [Tags]    No_Test
     [Arguments]    ${pergunta}   ${resposta}
-    ${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::input
-    Input Text   ${xpath}    ${resposta}
-    Sleep    2s
+    ${xpath}=  Set Variable    //label[normalize-space()='${pergunta}']/following::input
+    #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::input
+    Run Keyword And Ignore Error  Input Text   ${xpath}    ${resposta}
+    #Sleep    2s
 
 Preenchimento da questão de select
     [Documentation]    Responsavel  pela preenchimento com Select  e Option
@@ -114,7 +128,7 @@ Preenchimento da questão de select
     ${xpath}=  Set Variable    //span[@aria-hidden='true'][contains(normalize-space(.),'${pergunta}')]/following::select[1]
     #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::select
     Run Keyword And Ignore Error   Select From List By Label   ${xpath}    ${resposta}
-    Sleep    1s
+    #Sleep    1s
 
 Não selecionar resposta obrigatória?
     [Tags]    No_Test
