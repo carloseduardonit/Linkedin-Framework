@@ -30,37 +30,16 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 
 
 
-&{q30}    pergunta=Possui experiência na realização de testes de performance?
-...       resposta=No
-
-&{exp01}    pergunta=Quantos anos de experiência com QA você tem?
-...       resposta= 2
-&{exp02}        pergunta=Current company
-...       resposta= BRQ Solutions
-&{exp03}    pergunta= Confirm the name of the company where you work/ Confirme o nome da empresa em que você trabalha atualmente
-...       resposta= ${exp02['resposta']}
-
-&{loc05}    pergunta=What is your current location?
-...       resposta=São Gonçalo, Rio de Janeiro, Brazil
-&{loc06}     pergunta=Please confirm City, State and Country where you are currently living?
-...       resposta= ${loc05['resposta']}
-#Possui disponibilidade para contrato temporário?
-#Possui inglês fluente?
-#Há quantos anos você já usa JIRA no trabalho?
-&{q14}        pergunta=[EN] What is your level of confidence when communicating and collaborating in an English-speaking work environment?
-...       resposta=Intermediate I. Example: I can participate in meetings, but I partially understand what has been said.
-&{q15}        pergunta=[ES] What is your level of confidence when communicating and collaborating in an Spanish-speaking work environment?
-...       resposta=${q14['resposta']}
-&{q16}      pergunta = How comfortable do you feel working in an English-speaking environment?
-...        resposta=have an intermediate level of English. I am comfortable reading and understanding technical documentation and written communication. In an English-speaking work environment, I can follow meetings, especially on technical topics, but I am still developing my spoken fluency. I am actively working on improving my English to communicate more confidently and effectively.
 
 @{questoes}     ${q00}    ${q01}    ${q02}    ${q03}       ${q06}    ${q07}    ${q08}    ${q09}    
-...             ${q10}    ${q10a}    ${q11}    ${q12}    ${q13}      ${q30}
-...             ${exp01}    ${exp02}   ${exp03}
-...             ${con01}    ${con02}   ${con03}    ${con04}   ${con05}   ${con06}   ${con07}     ${con08}    ${con09}    ${con10}   
+...             ${q10}    ${q10a}    ${q11}    ${q12}       ${q13}    ${q14}    ${q15}    ${q16}    
+...             
+...             ${edu01}    ${edu02}
+...             ${exp01}    ${exp02}   ${exp03}   ${exp04}    ${exp05}   ${exp06}   ${exp07}
+...             ${con01}    ${con02}   ${con03}   ${con04}    ${con05}   ${con06}   ${con07}     ${con08}    ${con09}    ${con10}   
 ...             ${con11}
-...             ${red01}    ${red02}   ${red03}    ${red04}   ${red05}
-...             ${loc01}    ${loc02}   ${loc03}    ${loc04}    ${loc05}    ${loc06}
+...             ${red01}    ${red01a}   ${red02}    ${red03}   ${red04}   ${red05}
+...             ${loc01}    ${loc02}   ${loc03}    ${loc04}   ${loc05}    ${loc06}   ${loc07}
 *** Keywords ***
 Responder as questoes do formulario
     ${total_questoes}=    quantas questões existem?
@@ -111,6 +90,15 @@ Validar se a questão existe na tela?
     ${Resultado}=  Should Contain    ${perguntaDicionario}    ${PerguntaTela}
     Return ${Resultado}
 
+Preenchimento da questão de textarea
+    [Documentation]    Responsavel  pela preenchimento com Text Area
+     ...                Utiliza o xpath da pergunta para localizar o campo de resposta
+    [Tags]    No_Test
+    [Arguments]    ${pergunta}   ${resposta}
+    ${xpath}=  Set Variable    //label[normalize-space()='${pergunta}']/following::textarea
+    #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::textarea
+    Run Keyword And Ignore Error  Input Text   ${xpath}    ${resposta}
+    #Sleep    2s
 Preenchimento da questão de input
     [Documentation]    Responsavel  pela preenchimento com Input Text
      ...                Utiliza o xpath da pergunta para localizar o campo de resposta
