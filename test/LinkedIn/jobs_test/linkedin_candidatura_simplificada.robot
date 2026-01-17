@@ -124,7 +124,7 @@ Faça a Candidatura da vaga simplificada
         Remover aviso de segurança
         Candidatar ao processo simples
         Candidatar e fechar ao processo extensivo
-        Sleep    ${5s}
+        Sleep    ${2s}
     END
 
 Obter valor do progresso
