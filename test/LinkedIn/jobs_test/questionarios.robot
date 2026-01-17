@@ -45,6 +45,15 @@
 ...       resposta=2
 &{exp07}    pergunta=Possui experiência na realização de testes de performance?
 ...       resposta=No
+&{exp08}    pergunta=Há quantos anos você já usa Python no trabalho?
+...       resposta=0
+&{exp09}      pergunta=Há quantos anos você já usa Kotlin no trabalho?
+...       resposta=0
+&{exp10}      pergunta=Há quantos anos você já usa Java no trabalho?
+...       resposta=0
+&{exp11}      pergunta=Há quantos anos você já usa Amazon S3 no trabalho?
+...       resposta=0
+&{exp08a}      pergunta=Há quanto tempo de experiência em Python?
 
 # Questões  de Conhecimento [PT-BR]
 
