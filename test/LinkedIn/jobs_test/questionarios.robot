@@ -1,14 +1,18 @@
 *** Settings ***
 *** Variables ***
 
-&{q00}    pergunta=modelo
+&{q00}    ID=questionario_carlao
+...       Area= Contabilidade
+...       pergunta=modelo
 ...       resposta=Modelo de Resposta
-&{q00}    pergunta=Cover letter
+&{q20}    pergunta=Cover letter
 ...       resposta=Dear Hiring Manager, I am writing to express my interest in the Quality Assurance position at your company. I am a QA professional with solid experience in manual testing, system integrations, and structured test execution, combined with a strong background in Salesforce and enterprise systems.Over the past years, I have worked as a QA Manual Engineer, participating in projects that required detailed test planning, execution of functional and regression tests, defect tracking, and close collaboration with developers and business stakeholders. I have hands-on experience with tools such as Jira and Zephyr, and I am continuously evolving my skills in test automation using frameworks such as Robot Framework, Cypress, and Selenium.My experience with the Salesforce ecosystem is a key differentiator. I hold Salesforce certifications, including Salesforce Certified Associate and AI Associate, and I have worked with standard and custom objects, validations, flows, and integrations. This allows me to understand business rules deeply and validate complex scenarios with accuracy and attention to detail.In addition to my technical background, I bring strong analytical skills developed through my education in Systems Analysis and Development and my ongoing degree in Accounting. This multidisciplinary profile enables me to approach testing with a critical mindset, ensuring data consistency, process compliance, and high product quality. I am motivated, disciplined, and committed to continuous learning. I value clear communication, collaboration, and knowledge sharing, and I am confident that I can contribute positively to your QA team and overall product quality.Thank you for your time and consideration. I would welcome the opportunity to discuss how my experience and skills can add value to your organization.
 
-&{q00}    pergunta=Ao selecionar a opção abaixo, declaro que li, compreendi e concordo com os termos deste documento, e consinto com o tratamento dos meus dados pessoais pela CI&T e pela Lever para as finalidades aqui descritas. Leia o documento aqui: https://drive.google.com/file/d/1s_ChFr9NEf28YQLBJWTRY6-nLhYvG1Rm/view
+&{q21}    pergunta=Ao selecionar a opção abaixo, declaro que li, compreendi e concordo com os termos deste documento, e consinto com o tratamento dos meus dados pessoais pela CI&T e pela Lever para as finalidades aqui descritas. Leia o documento aqui: https://drive.google.com/file/d/1s_ChFr9NEf28YQLBJWTRY6-nLhYvG1Rm/view
 ...         resposta=Li e aceito os termos deste consentimento para tratamento dos meus dados pessoais pela CI&T
-# Questões  de redes sociais [PT-BR]
+
+&{q22}    pergunta=Qual seu tempo de experiência como QA e quais são suas principais stacks de atuação? *
+...       resposta=Tenho aproximadamente 2 anos de experiência como QA, atuando principalmente com testes manuais em projetos corporativos. Principais stacks e áreas de atuação: Testes manuais: criação e execução de casos de teste, testes funcionais, regressão, integração e homologação. Ferramentas de gestão: Jira e Zephyr (planejamento, execução e evidências de testes). Plataformas: Salesforce (CRM), com foco em validação de regras de negócio, fluxos, objetos padrão e customizados. Automação (em evolução): Robot Framework, com contato também com Cypress e Selenium. Banco de dados: noções de SQL para validação de dados. Outros contextos: testes em sistemas ERP (Microsoft Dynamics AX) e aplicações mobile. [PT-BR]
 
 &{red01}    pergunta=Linkedin
 ...      resposta=https://www.linkedin.com/in/carlos-eduardo-dos-s-figueiredo/
@@ -54,7 +58,9 @@
 &{exp11}      pergunta=Há quantos anos você já usa Amazon S3 no trabalho?
 ...       resposta=0
 &{exp08a}      pergunta=Há quanto tempo de experiência em Python?
-
+...       resposta=0
+&{exp12}       pergunta=Qual foi o seu último/atual salário?
+...       resposta=3825.00
 # Questões  de Conhecimento [PT-BR]
 
 &{con01}    pergunta=Você possui conhecimento de metodologias ágeis (Scrum, Kanban)?
@@ -79,7 +85,42 @@
 ...       resposta=Yes
 &{con11}    pergunta=Você possui conhecimento em automação de testes
 ...       resposta=Yes
-
+&{con12}    pergunta=Você possui conhecimento em automação de testes com Robot Framework?
+...       resposta=Yes
+&{con13}    pergunta=Você possui conhecimento em automação de testes com Appium?
+...       resposta=No
+&{con14}    pergunta=Você possui formação superior em andamento em Engenharia de Computação, Engenharia de Dados, Ciência de Dados, Análise de Sistemas ou áreas correlatas?
+...       resposta=Yes
+&{con15}    pergunta=Possui conhecimento em ferramentas de automação e RPA como n8n ou Automate? ( diferencial, não iliminatório)
+...       resposta=No
+&{con16}    pergunta=Você possui conhecimento em automação de testes com Katalon?
+...       resposta=No
+&{con17}    pergunta=Está disponível para trabalhar presencialmente, de segunda a sexta, das 08h00 às 17h30?
+...       resposta=No
+&{con18}    pergunta=Já realizou escrituração contábil na prática?
+...       resposta=No
+&{con19}    pergunta=Já executou conciliações contábeis mensais?
+...       resposta=No
+&{con20}  pergunta=Possui conhecimento em Balanço Patrimonial, Balancete e DRE ?
+...       resposta=Yes
+&{con21}  pergunta=Você já trabalhou em escritório contábil?
+...       resposta=Yes
+&{con22}  pergunta=Tem experiência com registros e lançamentos contábeis?
+...       resposta=No
+&{con23}  pergunta=Já participou de fechamento contábil ?
+...       resposta=No
+&{con24}  pergunta=Já utilizou algum sistema contábil no dia a dia?
+...       resposta=Yes
+&{con24}  pergunta=Está cursando Ciências Contábeis?Está cursando Ciências Contábeis?
+...       resposta=Yes
+&{con24}  pergunta=Tem experiência em escritório de contabilidade?
+...       resposta=Yes
+&{con24}  pergunta=Tem disponibilidade para trabalhar presencialmente?
+...       resposta=No
+&{con25}  pergunta=Já trabalhou em escritório de contabilidade?
+...       resposta=Yes
+&{con26}  pergunta=Vc tem conhecimento no sistema Domínio?
+...       resposta=No
 # Questões de Localidade [PT-BR]
 
 &{loc01}  pergunta=Possui disponibilidade para atuação Presencial em Recife-PE?
@@ -88,7 +129,7 @@
 ...       resposta=No
 &{loc03}  pergunta=Aceita atuar de forma híbrida - presencial 3x na semana, na Vila Olímpia - São Paulo - SP?
 ...       resposta=No
-&{loc04}    pergunta=Você possui disponibilidade para atuação presencial em Maringá/ PR? Requisito obrigatório e indispensável
+&{loc04}  pergunta=Você possui disponibilidade para atuação presencial em Maringá/ PR? Requisito e indispensável
 ...       resposta=No
 &{loc05}    pergunta=What is your current location?
 ...       resposta=São Gonçalo, Rio de Janeiro, Brazil

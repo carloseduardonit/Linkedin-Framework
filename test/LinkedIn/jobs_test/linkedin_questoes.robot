@@ -32,13 +32,14 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 
 
 
-@{questoes}     ${q00}    ${q01}    ${q02}    ${q03}       ${q06}    ${q07}    ${q08}    ${q09}    
-...             ${q10}    ${q10a}   ${q10b}   ${q11}    ${q12}       ${q13}    ${q14}    ${q15}    
-...             ${q16}  ${q17}    ${q18}    ${q19}
+@{questoes}     ${q00}    ${q01}    ${q02}    ${q03}    ${q06}    ${q07}    ${q08}    ${q09}    
+...             ${q10}    ${q10a}   ${q10b}   ${q11}    ${q12}    ${q13}    ${q14}    ${q15}    
+...             ${q16}    ${q17}    ${q18}    ${q19}    ${q20}    ${q21}    ${q22}
 ...             ${edu01}    ${edu02}
 ...             ${exp01}    ${exp02}   ${exp03}   ${exp04}    ${exp05}   ${exp06}   ${exp07}
 ...             ${con01}    ${con02}   ${con03}   ${con04}    ${con05}   ${con06}   ${con07}     ${con08}    ${con09}    ${con10}   
-...             ${con11}
+...             ${con11}    ${con12}   ${con13}   ${con14}    ${con15}    ${con16}   ${con17}     ${con18}    ${con19}    ${con20}   
+...             ${con21}    ${con22}   ${con23}   ${con24}
 ...             ${red01}    ${red01a}   ${red02}    ${red03}   ${red04}   ${red05}
 ...             ${loc01}    ${loc02}   ${loc03}    ${loc04}   ${loc05}    ${loc06}   ${loc07}
 *** Keywords ***
@@ -49,17 +50,24 @@ Responder as questoes do formulario
         ${resposta}=    Set Variable    ${questao['resposta']}
         Log to console   Pergunta: ${pergunta}  - Resposta: ${resposta}
         ${quantidade_input}=    quantas questões existem com input?
-        ${temInput}=    run keyword and return status  Should be equal as integers    ${quantidade_input}    0
+        ${NÃOtemInput}=    run keyword and return status  Should be equal as integers    ${quantidade_input}    0
         ${quantidade_select}=    quantas questões existem com select?
-        ${temSelect}=  Run keyword and return status  Should be equal as integers    ${quantidade_select}    0
+        ${NÃOtemSelect}=  Run keyword and return status  Should be equal as integers    ${quantidade_select}    0
         ${temRespostaYes}=  Run keyword and return status    Should be equal as strings    ${resposta}    Yes
         ${temRespostaNo}=  Run keyword and return status    Should be equal as strings    ${resposta}    No
-        IF    not ${temInput} and not ${temRespostaYes} and not ${temRespostaNo}
+        IF    ${NÃOtemInput} and ${NÃOtemSelect}
+            BREAK
+        END
+        IF    not ${NÃOtemInput} and not ${temRespostaYes} and not ${temRespostaNo}
            Preenchimento da questão de input   ${pergunta}   ${resposta}
           # No operation
         END
-        IF   not ${temSelect}
+        IF   not ${NÃOtemSelect}
             Preenchimento da questão de select   ${pergunta}   ${resposta}
+        END
+
+        IF   True
+            Preenchimento da questão de Radio Button    ${pergunta}    ${resposta}
         END
                 
     END
@@ -100,6 +108,15 @@ Preenchimento da questão de textarea
     #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::textarea
     Run Keyword And Ignore Error  Input Text   ${xpath}    ${resposta}
     #Sleep    2s
+
+Preenchimento da questão de Radio Button
+    [Documentation]
+    [Tags]    No_Test
+    [Arguments]    ${pergunta}   ${resposta}
+    ${xpath}=   Set variable   (//span[@aria-hidden='true'][contains(text(),'${pergunta}')]/following)[1]
+    ${option_xpath}=   Set variable   .//label[contains(normalize-space(.),'${resposta}')]
+    ${full_xpath}=   Set variable   ${xpath}${option_xpath}
+    Run Keyword And Ignore Error   Click Element   ${full_xpath}
 Preenchimento da questão de input
     [Documentation]    Responsavel  pela preenchimento com Input Text
      ...                Utiliza o xpath da pergunta para localizar o campo de resposta
