@@ -13,6 +13,8 @@
 
 &{q22}    pergunta=Qual seu tempo de experiência como QA e quais são suas principais stacks de atuação? *
 ...       resposta=Tenho aproximadamente 2 anos de experiência como QA, atuando principalmente com testes manuais em projetos corporativos. Principais stacks e áreas de atuação: Testes manuais: criação e execução de casos de teste, testes funcionais, regressão, integração e homologação. Ferramentas de gestão: Jira e Zephyr (planejamento, execução e evidências de testes). Plataformas: Salesforce (CRM), com foco em validação de regras de negócio, fluxos, objetos padrão e customizados. Automação (em evolução): Robot Framework, com contato também com Cypress e Selenium. Banco de dados: noções de SQL para validação de dados. Outros contextos: testes em sistemas ERP (Microsoft Dynamics AX) e aplicações mobile. [PT-BR]
+&{q23}     pergunta=What is your monthly expectation (specify currency)?
+...         resposta=My salary expectation is around 3800 BRL per month, considering my experience as a QA Manual Engineer and my ongoing development in test automation. I am open to discussing this further based on the overall compensation package and growth opportunities within the company.
 
 &{red01}    pergunta=Linkedin
 ...      resposta=https://www.linkedin.com/in/carlos-eduardo-dos-s-figueiredo/

@@ -34,7 +34,8 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 
 @{questoes}     ${q00}    ${q01}    ${q02}    ${q03}    ${q06}    ${q07}    ${q08}    ${q09}    
 ...             ${q10}    ${q10a}   ${q10b}   ${q11}    ${q12}    ${q13}    ${q14}    ${q15}    
-...             ${q16}    ${q17}    ${q18}    ${q19}    ${q20}    ${q21}    ${q22}
+...             ${q16}    ${q17}    ${q18}    ${q19}    ${q20}    ${q21}    ${q22} 
+...             ${q23}
 ...             ${edu01}    ${edu02}
 ...             ${exp01}    ${exp02}   ${exp03}   ${exp04}    ${exp05}   ${exp06}   ${exp07}
 ...             ${con01}    ${con02}   ${con03}   ${con04}    ${con05}   ${con06}   ${con07}     ${con08}    ${con09}    ${con10}   
