@@ -10,7 +10,7 @@ Resource    linkedin_candidatura_simplificada.robot
 Resource    linkedin_questoes.robot
 *** Variables ***
 ${Vaga_Fechada}    //div[@class='job-card-container__footer-item--highlighted display-block t-12 pt1'][contains(.,'Não exibiremos mais esta vaga a você.')]
-
+${Botao.Aplicar}    (//span[@class='artdeco-button__text'][normalize-space()='Aplicar'])[1]
 *** Keywords ***
 path do Link do Cartão da Vaga de Numero "${numero_item}"
     [Documentation]    Link do Cartão da Vaga

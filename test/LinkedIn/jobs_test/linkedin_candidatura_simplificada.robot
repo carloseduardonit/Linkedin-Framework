@@ -68,9 +68,10 @@ Candidatar ao processo extensivo
         WHILE    ${progresso_valor} < 100
             ${valor} =  Convert to number    ${progresso_valor}         2
             Log To Console    \nProgresso atual: ${valor} %            #${progresso_valor} =    Obter valor do progresso
-            Responder as questoes do formulario
+            
             Manipular Element   ${botao_avancarCandidatura}             
-            Manipular Element   ${botao_revisarCandidatura}            
+            Manipular Element   ${botao_revisarCandidatura} 
+            Responder as questoes do formulario           
             Manipular Element   ${botao_enviarCandidatura}           
             Sleep    ${5s}           
             IF   not ${progresso_valor}
