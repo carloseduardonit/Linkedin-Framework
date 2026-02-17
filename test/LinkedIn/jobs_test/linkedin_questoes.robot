@@ -35,12 +35,12 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 @{questoes}     ${q00}    ${q01}    ${q02}    ${q03}    ${q06}    ${q07}    ${q08}    ${q09}    
 ...             ${q10}    ${q10a}   ${q10b}   ${q11}    ${q12}    ${q13}    ${q14}    ${q15}    
 ...             ${q16}    ${q17}    ${q18}    ${q19}    ${q20}    ${q21}    ${q22} 
-...             ${q23}
+...             ${q23}    ${Q24}
 ...             ${edu01}    ${edu02}
 ...             ${exp01}    ${exp02}   ${exp03}   ${exp04}    ${exp05}   ${exp06}   ${exp07}
 ...             ${con01}    ${con02}   ${con03}   ${con04}    ${con05}   ${con06}   ${con07}     ${con08}    ${con09}    ${con10}   
 ...             ${con11}    ${con12}   ${con13}   ${con14}    ${con15}    ${con16}   ${con17}     ${con18}    ${con19}    ${con20}   
-...             ${con21}    ${con22}   ${con23}   ${con24}
+...             ${con21}    ${con22}   ${con23}   ${con24}  ${con25}    ${con26}   ${con27}     ${con28}    ${con29}
 ...             ${red01}    ${red01a}   ${red02}    ${red03}   ${red04}   ${red05}
 ...             ${loc01}    ${loc02}   ${loc03}    ${loc04}   ${loc05}    ${loc06}   ${loc07}
 *** Keywords ***

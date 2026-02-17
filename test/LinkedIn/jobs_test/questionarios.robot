@@ -5,6 +5,8 @@
 ...       Area= Contabilidade
 ...       pergunta=modelo
 ...       resposta=Modelo de Resposta
+&{q24}    pergunta=Estuda Ciências Contábeis?
+...       resposta=Yes
 &{q20}    pergunta=Cover letter
 ...       resposta=Dear Hiring Manager, I am writing to express my interest in the Quality Assurance position at your company. I am a QA professional with solid experience in manual testing, system integrations, and structured test execution, combined with a strong background in Salesforce and enterprise systems.Over the past years, I have worked as a QA Manual Engineer, participating in projects that required detailed test planning, execution of functional and regression tests, defect tracking, and close collaboration with developers and business stakeholders. I have hands-on experience with tools such as Jira and Zephyr, and I am continuously evolving my skills in test automation using frameworks such as Robot Framework, Cypress, and Selenium.My experience with the Salesforce ecosystem is a key differentiator. I hold Salesforce certifications, including Salesforce Certified Associate and AI Associate, and I have worked with standard and custom objects, validations, flows, and integrations. This allows me to understand business rules deeply and validate complex scenarios with accuracy and attention to detail.In addition to my technical background, I bring strong analytical skills developed through my education in Systems Analysis and Development and my ongoing degree in Accounting. This multidisciplinary profile enables me to approach testing with a critical mindset, ensuring data consistency, process compliance, and high product quality. I am motivated, disciplined, and committed to continuous learning. I value clear communication, collaboration, and knowledge sharing, and I am confident that I can contribute positively to your QA team and overall product quality.Thank you for your time and consideration. I would welcome the opportunity to discuss how my experience and skills can add value to your organization.
 
@@ -113,15 +115,15 @@
 ...       resposta=No
 &{con24}  pergunta=Já utilizou algum sistema contábil no dia a dia?
 ...       resposta=Yes
-&{con24}  pergunta=Está cursando Ciências Contábeis?Está cursando Ciências Contábeis?
+&{con25}  pergunta=Está cursando Ciências Contábeis?
 ...       resposta=Yes
-&{con24}  pergunta=Tem experiência em escritório de contabilidade?
+&{con26}  pergunta=Tem experiência em escritório de contabilidade?
 ...       resposta=Yes
-&{con24}  pergunta=Tem disponibilidade para trabalhar presencialmente?
+&{con27}  pergunta=Tem disponibilidade para trabalhar presencialmente?
 ...       resposta=No
-&{con25}  pergunta=Já trabalhou em escritório de contabilidade?
+&{con28}  pergunta=Já trabalhou em escritório de contabilidade?
 ...       resposta=Yes
-&{con26}  pergunta=Vc tem conhecimento no sistema Domínio?
+&{con29}  pergunta=Vc tem conhecimento no sistema Domínio?
 ...       resposta=No
 # Questões de Localidade [PT-BR]
 
