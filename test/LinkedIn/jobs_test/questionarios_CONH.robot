@@ -106,7 +106,7 @@ ${PRE}=      Set Variable    ${pres}[2]
 ...       pergunta=Você possui conhecimento em automação de testes com Katalon?
 ...       resposta=No
 
-&{C0NH017}    ID=${PRE}-017
+&{CONH017}    ID=${PRE}-017
 ...    area=${AREA}
 ...    tipo=${tipos}[3]
 ...    pergunta=Você possui inglês fluente?

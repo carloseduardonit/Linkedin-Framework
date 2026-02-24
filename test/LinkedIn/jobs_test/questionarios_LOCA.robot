@@ -22,7 +22,7 @@ ${PRE}=      Set Variable    ${pres}[1]
 ...       pergunta=Você reside a cidade de São Paulo?
 ...       resposta=No
 
-&{LOCA03}  ID=${PRE}-003
+&{LOCA003}  ID=${PRE}-003
 ...       area=${AREA}
 ...       tipo=${tipos}[3]
 ...       pergunta=Aceita atuar de forma híbrida - presencial 3x na semana, na Vila Olímpia - São Paulo - SP?
@@ -51,3 +51,9 @@ ${PRE}=      Set Variable    ${pres}[1]
 ...       tipo=${tipos}[2]
 ...       pergunta=Location (city)
 ...       resposta= ${LOCA005['resposta']}
+
+&{LOCA006}  ID=${PRE}-006
+...    area=${AREA}
+...    tipo=${tipos}[3]
+...    pergunta=Esta posição é destinada a pessoas localizadas na América Central ou América do Sul, preferencialmente México ou Brasil. Você está localizado em um desses países?
+...    resposta=Sim
