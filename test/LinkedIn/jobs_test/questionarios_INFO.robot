@@ -24,13 +24,13 @@ ${PRE}=      Set Variable    ${pres}[1]
 
 &{INFO003}     ID=${PRE}-003
 ...       area=${AREA}
-...       tipo=${tipos}[0]
+...       tipo=${tipos}[2]
 ...       pergunta=Current company
 ...       resposta= BRQ Solutions
 
 &{INFO004}    ID=${PRE}-004
 ...       area=${AREA}
-...       tipo=${tipos}[0]
+...       tipo=${tipos}[2]
 ...       pergunta=Confirm the name of the company where you work/ Confirme o nome da empresa em que você trabalha atualmente
 ...       resposta= ${INFO003['resposta']}
 
@@ -136,6 +136,19 @@ ${PRE}=      Set Variable    ${pres}[1]
 ...       pergunta=Você tem disponibilidade para trabalhar em horários flexíveis?
 ...      resposta=Sim
 
+&{INFO016A}   ID=${PRE}-016A
+...    area=${AREA}
+...    tipo=${tipos}[1]
+...    pergunta=Por quanto tempo você trabalhou com testes de automação?
+...    resposta=Atualmente estou adquirindo experiência em testes de automação por meio de projetos pessoais e treinamentos utilizando Robot Framework, com foco em testes semiautomatizados. Embora minha principal experiência seja em testes manuais, estou expandindo ativamente minhas habilidades em automação para fortalecer minha atuação em QA.
+
+&{INFO016B}   ID=${PRE}-016B
+...    area=${AREA}
+...    tipo=${tipos}[1]
+...    pergunta=Com quais ferramentas de automação de QA você já trabalhou? Ex: Selenium, Cypress, Cucumber, etc.
+...    resposta=Tenho experiência com Robot Framework em projetos pessoais e de estudo para testes semiautomatizados. Embora ainda não tenha utilizado Selenium ou Cypress profissionalmente, estudei seus conceitos e estou expandindo gradualmente meu conhecimento como parte da minha transição para automação de testes.
+
+
 &{INFO017}   ID=${PRE}-017
 ...       area=${AREA}
 ...       tipo=${tipos}[3]
@@ -168,110 +181,169 @@ ${PRE}=      Set Variable    ${pres}[1]
 ...    pergunta=[EN] What is your level of confidence when communicating and collaborating in an English-speaking work environment?
 ...    resposta=Intermediate. I can participate in meetings and understand most technical discussions, although I am still improving my spoken fluency.
 
-&{INFO022}
-...    ID=${PRE}-022
-...    area=${AREA}
-...    tipo=${tipos}[2]
-...    pergunta=[ES] What is your level of confidence when communicating and collaborating in a Spanish-speaking work environment?
-...    resposta=${Q14['resposta']}
-
-&{INFO023}
-...    ID=${PRE}-023
-...    area=${AREA}
-...    tipo=${tipos}[2]
-...    pergunta=How comfortable do you feel working in an English-speaking environment?
-...    resposta=I have an intermediate level of English. I am comfortable reading and understanding technical documentation and written communication. I can follow meetings, especially technical discussions, and I am actively improving my spoken fluency.
-
-&{Q17}
-...    ID=${PRE}-017
-...    area=${AREA}
-...    tipo=${tipos}[2]
-...    pergunta=What is your level of proficiency in English?
-...    resposta=Intermediate (B1 - Working proficiency)
-
-&{Q17}
-...    ID=${PRE}-017
-...    area=${AREA}
-...    tipo=${tipos}[2]
-...    pergunta=What is your level of proficiency in English?
-...    resposta=None
-
-&{Q17}
-...    ID=${PRE}-017
-...    area=${AREA}
-...    tipo=${tipos}[2]
-...    pergunta=Qual é o seu nível de proficiência em inglês?
-...    resposta=Intermediário (B1 - Proficiência profissional em desenvolvimento)
-
-&{Q18}
-...    ID=${PRE}-018
-...    area=${AREA}
-...    tipo=${tipos}[0]
-...    pergunta=How many years of Quality Assurance experience do you currently have?
-...    resposta=2
-
-&{Q19}
-...    ID=${PRE}-019
-...    area=${AREA}
-...    tipo=${tipos}[3]
-...    pergunta=This position is for individuals located within Central and South America, preferably Mexico or Brazil. Are you located in one of these countries?
-...    resposta=Yes
-
-
-&{INFO016A}   ID=${PRE}-016A
-...    area=${AREA}
-...    tipo=${tipos}[1]
-...    pergunta=Por quanto tempo você trabalhou com testes de automação?
-...    resposta=Atualmente estou adquirindo experiência em testes de automação por meio de projetos pessoais e treinamentos utilizando Robot Framework, com foco em testes semiautomatizados. Embora minha principal experiência seja em testes manuais, estou expandindo ativamente minhas habilidades em automação para fortalecer minha atuação em QA.
-
-&{INFO016A}   ID=${PRE}-016A
-...    ID=${PRE}-003
-...    area=${AREA}
-...    tipo=${tipos}[1]
-...    pergunta=Com quais ferramentas de automação de QA você já trabalhou? Ex: Selenium, Cypress, Cucumber, etc.
-...    resposta=Tenho experiência com Robot Framework em projetos pessoais e de estudo para testes semiautomatizados. Embora ainda não tenha utilizado Selenium ou Cypress profissionalmente, estudei seus conceitos e estou expandindo gradualmente meu conhecimento como parte da minha transição para automação de testes.
-
-&{Q14}
-...    ID=${PRE}-014
+&{INFO021A}    ID=${PRE}-021A
 ...    area=${AREA}
 ...    tipo=${tipos}[2]
 ...    pergunta=[EN] Qual é o seu nível de confiança ao se comunicar e colaborar em um ambiente de trabalho em inglês?
 ...    resposta=Intermediário. Consigo participar de reuniões e compreender a maioria das discussões técnicas, embora ainda esteja aprimorando minha fluência na fala.
 
-&{Q15}
-...    ID=${PRE}-015
+&{INFO022}    ID=${PRE}-022
+...    area=${AREA}
+...    tipo=${tipos}[2]
+...    pergunta=[ES] What is your level of confidence when communicating and collaborating in a Spanish-speaking work environment?
+...    resposta=${INFO021['resposta']}
+
+&{INFO022A}    ID=${PRE}-022A
 ...    area=${AREA}
 ...    tipo=${tipos}[2]
 ...    pergunta=[ES] Qual é o seu nível de confiança ao se comunicar e colaborar em um ambiente de trabalho em espanhol?
-...    resposta=${Q14['resposta']}
+...    resposta=${INFO021A['resposta']}
 
-&{Q16}
-...    ID=${PRE}-016
+&{INFO023}    ID=${PRE}-023
+...    area=${AREA}
+...    tipo=${tipos}[2]
+...    pergunta=How comfortable do you feel working in an English-speaking environment?
+...    resposta=I have an intermediate level of English. I am comfortable reading and understanding technical documentation and written communication. I can follow meetings, especially technical discussions, and I am actively improving my spoken fluency.
+
+&{INFO023A}    ID=${PRE}-023A
 ...    area=${AREA}
 ...    tipo=${tipos}[2]
 ...    pergunta=Quão confortável você se sente trabalhando em um ambiente de língua inglesa?
 ...    resposta=Possuo nível intermediário de inglês. Tenho facilidade para ler e compreender documentação técnica e comunicação escrita. Consigo acompanhar reuniões, especialmente discussões técnicas, e estou trabalhando ativamente para melhorar minha fluência na comunicação oral.
 
+&{INFO024}    ID=${PRE}-024
+...    area=${AREA}
+...    tipo=${tipos}[2]
+...    pergunta=What is your level of proficiency in English?
+...    resposta=Intermediate (B1 - Working proficiency)
 
+&{INFO024A}    ID=${PRE}-024A
+...    area=${AREA}
+...    tipo=${tipos}[2]
+...    pergunta=What is your level of proficiency in English?
+...    resposta=None
 
-&{Q18}
-...    ID=${PRE}-018
+&{INFO024B}    ID=${PRE}-024B
+...    area=${AREA}
+...    tipo=${tipos}[2]
+...    pergunta=Qual é o seu nível de proficiência em inglês?
+...    resposta=Intermediário (B1 - Proficiência profissional em desenvolvimento)
+
+&{INFO025}    ID=${PRE}-025
+...    area=${AREA}
+...    tipo=${tipos}[0]
+...    pergunta=How many years of Quality Assurance experience do you currently have?
+...    resposta=2
+
+&{INFO025A}    ID=${PRE}-025A
 ...    area=${AREA}
 ...    tipo=${tipos}[0]
 ...    pergunta=Quantos anos de experiência em Quality Assurance você possui atualmente?
 ...    resposta=2
 
-
-
-&{Q20}
-...    ID=${PRE}-020
+&{INFO026}    ID=${PRE}-026
 ...    area=${AREA}
-...    tipo=${tipos}[0]
+...    tipo=${tipos}[3]
+...    pergunta=This position is for individuals located within Central and South America, preferably Mexico or Brazil. Are you located in one of these countries?
+...    resposta=Yes
+
+&{INFO027}    ID=${PRE}-027
+...    area=${AREA}
+...    tipo=${tipos}[3]
+...    pergunta=Do you have a valid work authorization in the country where this position is based?
+...    resposta=Yes
+
+&{INFO028}    ID=${PRE}-028
+...    area=${AREA}
+...    tipo=${tipos}[3]
+...    pergunta=Do you have a valid work authorization in the country where this position is based?
+...    resposta=No
+
+&{INFO029}    ID=${PRE}-029
+...    area=${AREA}
+...    tipo=${tipos}[3]
+...    pergunta=Do you have a valid work authorization in the country where this position is based?
+...    resposta=I am authorized to work in Brazil and I am not restricted by any visa or work permit requirements.
+
+&{INFO030}    ID=${PRE}-030
+...    area=${AREA}
+...    tipo=${tipos}[3]
+...    pergunta=Do you have a valid work authorization in the country where this position is based?
+...    resposta=I am authorized to work in Brazil and I am not restricted by any visa or work permit requirements.
+
+&{INFO031}    ID=${PRE}-031
+...    area=${AREA}
+...    tipo=${tipos}[3]
+...    pergunta=Do you have a valid work authorization in the country where this position is based?
+...    resposta=I am authorized to work in Brazil and I am not restricted by any visa or work permit requirements.
+
+&{INFO032}   ID=${PRE}-032
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Quanto tempo você trabalhou com testes de automação?
+...     resposta=Atualmente estou adquirindo experiência em testes de automação por meio de projetos pessoais e treinamentos utilizando Robot Framework, com foco em testes semiautomatizados. Embora minha principal experiência seja em testes manuais, estou expandindo ativamente minhas habilidades em automação para fortalecer minha atuação em QA.
+
+&{INFO033}   ID=${PRE}-033
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Com quais ferramentas de automação de QA você já trabalhou? Ex: Selenium, Cypress, Cucumber, etc.
+...     resposta=Tenho experiência com Robot Framework em projetos pessoais e de estudo para testes semiautomatizados. Embora ainda não tenha utilizado Selenium ou Cypress profissionalmente, estudei seus conceitos e estou expandindo gradualmente meu conhecimento como parte da minha transição para automação de testes.
+
+&{INFO034}   ID=${PRE}-034
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Quais são as principais ferramentas de automação de testes que você conhece?
+...     resposta=As principais ferramentas de automação de testes que conheço são Robot Framework, Selenium, Cypress e JUnit. Cada uma delas tem suas particularidades e é utilizada em diferentes contextos de desenvolvimento e testes.
+
+&{INFO035}   ID=${PRE}-035
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Você já trabalhou com testes automatizados em ambientes de produção?
+...     resposta=Sim, tenho experiência com testes automatizados em ambientes de produção. Trabalhei com a automação de testes utilizando Robot Framework em projetos que exigiam validações rigorosas em ambientes reais, garantindo a qualidade e estabilidade dos sistemas entregues.
+
+&{INFO036}   ID=${PRE}-036
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Como você se prepara para realizar testes automatizados?
+...     resposta=Para me preparar para realizar testes automatizados, começo identificando os cenários críticos e os objetivos do teste. Em seguida, crio um plano detalhado que inclui definição dos casos de teste, definição das ferramentas a serem utilizadas e definição das estratégias de automação. Também realizo uma análise da estrutura do sistema alvo para garantir que os testes sejam eficazes e relevantes.
+
+&{INFO037}   ID=${PRE}-037
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Quais são os principais desafios enfrentados ao automatizar testes?
+...     resposta=Os principais desafios enfrentados ao automatizar testes incluem a manutenção constante dos scripts de automação, a adaptação às mudanças na estrutura do sistema alvo e a necessidade de manter uma equipe técnica qualificada. Além disso, é importante garantir que os testes automatizados sejam confiáveis e eficientes.
+
+&{INFO038}   ID=${PRE}-038
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Você já participou da criação ou manutenção de um framework de automação?
+...     resposta=Sim, participei da criação e manutenção de um framework de automação utilizando Robot Framework. Trabalhei na definição das estruturas padrão para scripts de teste, na padronização dos processos de execução e na documentação das práticas recomendadas para o uso do framework.
+
+&{INFO039}   ID=${PRE}-039
+...     area=${AREA}
+...     tipo=${tipos}[1]
+...     pergunta=Como você avalia o impacto dos testes automatizados no ciclo de desenvolvimento?
+...     resposta=Avalio o impacto dos testes automatizados no ciclo de desenvolvimento como positivo e significativo. Eles permitem uma maior velocidade na identificação e correção de problemas, reduzem o tempo necessário para validar novas funcionalidades e aumentam a confiança no lançamento das versões do software.
+
+&{INFO040}   ID=${PRE}-040
+...    area=${AREA}
+...    tipo=${tipos}[1]
+...    pergunta=Quais são as melhores práticas para escrever scripts eficazes em Robot Framework?
+...    resposta=As melhores práticas para escrever scripts eficazes em Robot Framework incluem: utilizar nomes claros para variáveis e keywords; organizar o código em módulos reutilizáveis; documentar adequadamente cada parte do script; seguir padrões consistentes no estilo do código; utilizar bibliotecas específicas quando necessário; manter os scripts atualizados com as mudanças no sistema alvo.
+
+&{INFO041}   ID=${PRE}-041
+ ...    area=${AREA}
+ ...    tipo=${tipos}[1]
+ ...    pergunta=Cite alguns exemplos práticos onde você aplicou técnicas avançadas no Robot Framework.
+ ...    resposta=Técnicas avançadas aplicadas no Robot Framework incluem: uso da biblioteca SeleniumLibrary para interações complexas com elementos web; implementação da técnica Page Object Model (POM) para melhor organização dos elementos da interface; utilização do recurso "Run Keyword If" para condicionais dinâmicas nos scripts; criação de keywords customizadas reutilizáveis em múltiplos cenários.
+
+&{INFO042}    ID=${PRE}-042
+...    area=${AREA}
+...    tipo=${tipos}[1]
 ...    pergunta=Carta de apresentação (Cover Letter)
 ...    resposta=Dear Hiring Manager, I am writing to express my interest in the Quality Assurance position at your company. I am a QA professional with solid experience in manual testing, system integrations, and structured test execution, combined with a strong background in Salesforce and enterprise systems. Over the past years, I have worked as a QA Manual Engineer, participating in projects that required detailed test planning, execution of functional and regression tests, defect tracking, and close collaboration with developers and business stakeholders. I have hands-on experience with tools such as Jira and Zephyr, and I am continuously evolving my skills in test automation using frameworks such as Robot Framework, Cypress, and Selenium. My experience with the Salesforce ecosystem is a key differentiator. I hold Salesforce certifications, including Salesforce Certified Associate and AI Associate, and I have worked with standard and custom objects, validations, flows, and integrations. This allows me to deeply understand business rules and validate complex scenarios with accuracy and attention to detail. In addition to my technical background, I bring strong analytical skills developed through my education in Systems Analysis and Development and my ongoing degree in Accounting. This multidisciplinary profile enables me to approach testing with a critical mindset, ensuring data consistency, process compliance, and high product quality. I am motivated, disciplined, and committed to continuous learning. I value clear communication, collaboration, and knowledge sharing, and I am confident that I can contribute positively to your QA team and overall product quality. Thank you for your time and consideration. I would welcome the opportunity to discuss how my experience and skills can add value to your organization.
 
-&{Q21}
-...    ID=${PRE}-021
+&{INFO043}    ID=${PRE}-043
 ...    area=${AREA}
 ...    tipo=${tipos}[3]
 ...    pergunta=Declaro que li, compreendi e concordo com os termos do consentimento para tratamento de dados pessoais.

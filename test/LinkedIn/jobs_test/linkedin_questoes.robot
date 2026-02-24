@@ -21,7 +21,11 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 ...    ${INFO014A}   ${INFO015A}   ${INFO016A}
 ...    ${INFO014B}   ${INFO015B}
 ...    ${INFO014C}
-...    ${INFO020}    ${INFO021}   ${INFO022}
+...    ${INFO020}    ${INFO021}   ${INFO022}     ${INFO023}    ${INFO024}    ${INFO025}    ${INFO026}    ${INFO027}    ${INFO028}    ${INFO029}
+...    ${INFO021A}     ${INFO022A}     ${INFO023A}     ${INFO024A}    ${INFO025A}
+...    ${INFO024B}
+...    ${INFO030}    ${INFO031}    ${INFO032}    ${INFO033}    ${INFO034}    ${INFO035}    ${INFO036}    ${INFO037}    ${INFO038}    ${INFO039}
+...    ${INFO040}    ${INFO041}    ${INFO042}    ${INFO043}
 ...    ${LOCA000}    ${LOCA001}    ${LOCA002}    ${LOCA003}   ${LOCA004}    ${LOCA005}    ${LOCA006}
 ...    ${LOCA005A}    ${LOCA005B}  
    
