@@ -1,48 +1,30 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
-Resource    questionarios.robot
+Resource    questionarios_CONH.robot
+Resource    questionarios_CONT.robot
+Resource    questionarios_INFO.robot
+Resource    questionarios_LOCA.robot
+Resource    questionarios_REDE.robot
 *** Variables ***
 ${pergunta}=   //label[contains(.,'Como esta sua expectativa de valor no CLT?')]
 ${input_resposta}=  //input[contains(@class,'error-field artdeco-text-input--input')]
 ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-list-form-component-formElement-urn-li-jobs-applyformcommon-easyApplyFormElement-4243028816-20049339042-multipleChoice-error')]
 
 
-&{q06}    pergunta=Como ficou sabendo da nossa vaga?
-...      resposta=LinkedIn
-&{q07}    pergunta=Qual o seu nível de inglês?
-...      resposta=Intermediário
-&{q08}    pergunta=Você possui algum familiar (como pais, irmãos, sogros, cunhados, cônjuges, ou filhos, enteados, padrasto/madrasta, genro/ nora, amigo íntimo ou pessoa próxima (com quem você tem um relacionamento significativo e contínuo) que atualmente trabalha na CI&T?
-...      resposta=Não
-&{q09}    pergunta=Você possui alguma deficiência?
-...      resposta=Não
-&{q10}   pergunta=Qual sua pretensão salarial?
-...      resposta=4000.00 
-&{q10a}   pergunta=Pretensão salarial?
-...      resposta=${q10['resposta']}
-&{q11}   pergunta=Você tem disponibilidade para trabalhar em horários flexíveis?
-...      resposta=Sim
-&{q12}   pergunta=Você possui alguma experiência anterior na área?
-...      resposta=Não
-&{q13}   pergunta=Você possui experiência em testes manuais?
-...      resposta=Yes
-&{q10b}   pergunta=Qual seria sua pretensão salarial para uma vaga CLT? Só contratamos nessa modalidade. 
-...       resposta=${q10['resposta']}
-
-
-
-
-
-@{questoes}     ${q00}    ${q01}    ${q02}    ${q03}    ${q06}    ${q07}    ${q08}    ${q09}    
-...             ${q10}    ${q10a}   ${q10b}   ${q11}    ${q12}    ${q13}    ${q14}    ${q15}    
-...             ${q16}    ${q17}    ${q18}    ${q19}    ${q20}    ${q21}    ${q22} 
-...             ${q23}    ${Q24}
-...             ${edu01}    ${edu02}
-...             ${exp01}    ${exp02}   ${exp03}   ${exp04}    ${exp05}   ${exp06}   ${exp07}
-...             ${con01}    ${con02}   ${con03}   ${con04}    ${con05}   ${con06}   ${con07}     ${con08}    ${con09}    ${con10}   
-...             ${con11}    ${con12}   ${con13}   ${con14}    ${con15}    ${con16}   ${con17}     ${con18}    ${con19}    ${con20}   
-...             ${con21}    ${con22}   ${con23}   ${con24}  ${con25}    ${con26}   ${con27}     ${con28}    ${con29}
-...             ${red01}    ${red01a}   ${red02}    ${red03}   ${red04}   ${red05}
-...             ${loc01}    ${loc02}   ${loc03}    ${loc04}   ${loc05}    ${loc06}   ${loc07}
+@{questoes}    
+...    ${CONH000}    ${CONH001}    ${CONH002}    ${CONH003}    ${CONH004}    ${CONH005}    ${CONH006}    ${CONH007}    ${CONH008}     ${CONH009}
+...    ${CONH010}    ${CONH011}    ${CONH012}    ${CONH013}    ${CONH014}    ${CONH015}    ${CONH016}    ${CONH017}    ${CONH018}         
+...    ${REDE000}    ${REDE001}    ${REDE002}    ${REDE003}    ${REDE004}    ${REDE005}
+...    ${REDE001A}
+...    ${INFO000}   ${INFO001}    ${INFO002}    ${INFO003}    ${INFO004}    ${INFO005}    ${INFO006}    ${INFO007}    ${INFO008}    ${INFO009}
+...    ${INFO010}   ${INFO011}    ${INFO012}    ${INFO013}    ${INFO014}    ${INFO015}    ${INFO016}    ${INFO017}    ${INFO018}    ${INFO019}
+...    ${INFO014A}   ${INFO015A}   ${INFO016A}
+...    ${INFO014B}   ${INFO015B}
+...    ${INFO014C}
+...    ${INFO020}    ${INFO021}   ${INFO022}
+...    ${LOCA000}    ${LOCA001}    ${LOCA002}    ${LOCA003}   ${LOCA004}    ${LOCA005}    ${LOCA006}
+...    ${LOCA005A}    ${LOCA005B}  
+   
 *** Keywords ***
 Responder as questoes do formulario
     ${total_questoes}=    quantas questões existem?
