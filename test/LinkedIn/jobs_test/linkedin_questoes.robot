@@ -1,5 +1,7 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
+Library    Collections
+Resource    test/LinkedIn/linkedin_suporte.robot
 Resource    questionarios_CONH.robot
 Resource    questionarios_CONT.robot
 Resource    questionarios_INFO.robot
@@ -21,8 +23,8 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 ...    ${INFO014A}   ${INFO015A}   ${INFO016A}
 ...    ${INFO014B}   ${INFO015B}
 ...    ${INFO014C}
-...    ${INFO020}    ${INFO021}   ${INFO022}     ${INFO023}    ${INFO024}    ${INFO025}    ${INFO026}    ${INFO027}    ${INFO028}    ${INFO029}
-...    ${INFO021A}     ${INFO022A}     ${INFO023A}     ${INFO024A}    ${INFO025A}
+...    ${INFO020}    ${INFO021}    ${INFO022}     ${INFO023}    ${INFO024}    ${INFO025}    ${INFO026}    ${INFO027}    ${INFO028}    ${INFO029}
+...    ${INFO021A}    ${INFO022A}   ${INFO023A}    ${INFO024A}    ${INFO025A}
 ...    ${INFO024B}
 ...    ${INFO030}    ${INFO031}    ${INFO032}    ${INFO033}    ${INFO034}    ${INFO035}    ${INFO036}    ${INFO037}    ${INFO038}    ${INFO039}
 ...    ${INFO040}    ${INFO041}    ${INFO042}    ${INFO043}
@@ -32,96 +34,113 @@ ${selecionar_resposta}=     //select[contains(@aria-describedby,'text-entity-lis
 *** Keywords ***
 Responder as questoes do formulario
     ${total_questoes}=    quantas questões existem?
-    FOR    ${questao}    IN    @{questoes}
-        ${pergunta}=    Set Variable    ${questao['pergunta']}
-        ${resposta}=    Set Variable    ${questao['resposta']}
-        Log to console   Pergunta: ${pergunta}  - Resposta: ${resposta}
-        ${quantidade_input}=    quantas questões existem com input?
-        ${NÃOtemInput}=    run keyword and return status  Should be equal as integers    ${quantidade_input}    0
-        ${quantidade_select}=    quantas questões existem com select?
-        ${NÃOtemSelect}=  Run keyword and return status  Should be equal as integers    ${quantidade_select}    0
-        ${temRespostaYes}=  Run keyword and return status    Should be equal as strings    ${resposta}    Yes
-        ${temRespostaNo}=  Run keyword and return status    Should be equal as strings    ${resposta}    No
-        IF    ${NÃOtemInput} and ${NÃOtemSelect}
-            BREAK
-        END
-        IF    not ${NÃOtemInput} and not ${temRespostaYes} and not ${temRespostaNo}
-           Preenchimento da questão de input   ${pergunta}   ${resposta}
-          # No operation
-        END
-        IF   not ${NÃOtemSelect}
-            Preenchimento da questão de select   ${pergunta}   ${resposta}
-        END
+    ${quantidade_input}=    quantas questões existem com input?
+    ${NÃOtemInput}=    run keyword and return status  Should be equal as integers    ${quantidade_input}    0
+    ${quantidade_select}=    quantas questões existem com select?
+    ${NÃOtemSelect}=  Run keyword and return status  Should be equal as integers    ${quantidade_select}    0
+    @{response}=    gerar dicionário de questões
+    IF    response== ${None}
+        log to console    Questões encontradas: ${response}
+    ELSE
+        FOR    ${questao}    IN    @{response}
+            ${ID}=    Set Variable        ${questao['ID']}
+            ${pergunta}=    Set Variable    ${questao['pergunta']}
+            ${resposta}=    Set Variable    ${questao['resposta']}
+            ${tipo}=    Set Variable    ${questao['tipo']}
+            ${area}=    Set Variable        ${questao['area']}
+            IF    ${NÃOtemInput} and ${NÃOtemSelect}
+                BREAK
+            END
 
-        IF   True
-            Preenchimento da questão de Radio Button    ${pergunta}    ${resposta}
+            Preenchimento da questão de input   ${pergunta}   ${resposta}  ${tipo}
+            Preenchimento da questão de select   ${pergunta}   ${resposta}  ${tipo}
+            Preenchimento da questão de Radio Button    ${pergunta}    ${resposta}  ${tipo}
+            Preenchimento da questão de textarea    ${pergunta}   ${resposta}  ${tipo}      
         END
-                
     END
-    Log to console   total de questões a responder: ${total_questoes}
-Gerar patch para pergunta "${pergunta}"
-    [Tags]     No_Test    Logica_test
-    ${patch}=  //label[contains(.,'${pergunta}')]
-    RETURN    ${patch}
-
-Gerar patch para resposta "${resposta}"
-    [Tags]     No_Test
-    ${patch}=  //input[contains(.,'${resposta}')]
-    ${auxiliar}=  Element Should Be Visible    locator=${patch}
-    IF   '${auxiliar}' == 'True'
-        Set Focus To Element    ${patch}
-        Click Element    ${patch}     
-    END
-    RETURN    ${patch}
-
-
-
-
-
-Validar se a questão existe na tela?
+Gerar dicionário de questões
     [Documentation]   Valida se a questão está visível na tela.
      ...              Compara a pergunta vinda do dicionário com a pergunta exibida na tela.
     [Tags]    No_Test
-    [Arguments]    ${perguntaDicionario}   ${PerguntaTela}
-    ${Resultado}=  Should Contain    ${perguntaDicionario}    ${PerguntaTela}
-    Return ${Resultado}
+    
+    &{response}=  Set variable  ${None}
+    FOR    ${guestao}    IN    @{questoes}
+        ${pergunta}=    Set Variable    ${guestao['pergunta']}
+        
+        ${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]
+        ${elemento}=    Run Keyword And Return Status   Page should contain    ${xpath}
+        IF    ${elemento}
+           &{response}=    Set to dictionary    ${guestao}
+           Log to console    Questão encontrada: ${pergunta}
+        END
+    END
+    Return From Keyword    ${response}
 
 Preenchimento da questão de textarea
     [Documentation]    Responsavel  pela preenchimento com Text Area
-     ...                Utiliza o xpath da pergunta para localizar o campo de resposta
+     ...               \nUtiliza o xpath da pergunta para localizar o campo de resposta
+     ...               \nVerifica se o tipo da questão é textarea, caso contrário, não preenche a resposta
     [Tags]    No_Test
-    [Arguments]    ${pergunta}   ${resposta}
-    ${xpath}=  Set Variable    //label[normalize-space()='${pergunta}']/following::textarea
-    #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::textarea
-    Run Keyword And Ignore Error  Input Text   ${xpath}    ${resposta}
-    #Sleep    2s
+    [Arguments]    ${pergunta}   ${resposta}  ${tipo}=${None}
+    ${EstaComoNone}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${None}
+    ${EstaPerguntaeTextarea}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${tipos}[1]
+    IF    not ${EstaPerguntaeTextarea} or ${EstaComoNone}
+         # Se o tipo for textarea, não preencher input
+        ${xpath}=  Set Variable    //label[normalize-space()='${pergunta}']/following::textarea
+        #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::textarea
+        Run Keyword And Ignore Error  Input Text   ${xpath}    ${resposta}
+        Log to console    ${pergunta} foi pelo textarea.
+    END
+    
 
 Preenchimento da questão de Radio Button
-    [Documentation]
+    [Documentation]   Responsavel  pela preenchimento com Radio Button
+     ...               \nUtiliza o xpath da pergunta para localizar o campo de resposta
+     ...               \nVerifica se o tipo da questão é Radio Button, caso contrário, não preenche a resposta
+     ...               \nPara questões do tipo Radio Button, a resposta é selecionada clicando no elemento correspondente à opção desejada.
     [Tags]    No_Test
-    [Arguments]    ${pergunta}   ${resposta}
-    ${xpath}=   Set variable   (//span[@aria-hidden='true'][contains(text(),'${pergunta}')]/following)[1]
-    ${option_xpath}=   Set variable   .//label[contains(normalize-space(.),'${resposta}')]
-    ${full_xpath}=   Set variable   ${xpath}${option_xpath}
-    Run Keyword And Ignore Error   Click Element   ${full_xpath}
+    [Arguments]    ${pergunta}   ${resposta}    ${tipo}= ${None}
+     ${EstaComoNone}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${None}
+     ${EstaPerguntaeRadio}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${tipos}[0]
+     IF    not ${EstaPerguntaeRadio} or ${EstaComoNone}
+        # Se o tipo for Radio Button, 
+        ${xpath}=   Set variable   (//span[@aria-hidden='true'][contains(text(),'${pergunta}')]/following)[1]
+        ${option_xpath}=   Set variable   .//label[contains(normalize-space(.),'${resposta}')]
+        ${full_xpath}=   Set variable   ${xpath}${option_xpath}
+        Run Keyword And Ignore Error   Click Element   ${full_xpath}
+        Log to console    ${pergunta} foi pelo Radio Button.
+    END
 Preenchimento da questão de input
     [Documentation]    Responsavel  pela preenchimento com Input Text
-     ...                Utiliza o xpath da pergunta para localizar o campo de resposta
-    [Tags]    No_Test
-    [Arguments]    ${pergunta}   ${resposta}
-    ${xpath}=  Set Variable    //label[normalize-space()='${pergunta}']/following::input
-    #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::input
-    Run Keyword And Ignore Error  Input Text   ${xpath}    ${resposta}
-    #Sleep    2s
+     ...               \nUtiliza o xpath da pergunta para localizar o campo de resposta
+     ...               \nVerifica se o tipo da questão é input, caso contrário, não preenche a resposta
+    [Tags]    Test
+    [Arguments]    ${pergunta}   ${resposta}   ${tipo}=${None}
+    ${EstaComoNone}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${None}
+    ${EstaPerguntaeInput}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${tipos}[2]
+    IF    ${EstaPerguntaeInput} or ${EstaComoNone}
+        # Se o tipo for input
+        ${xpath}=  Set Variable    //label[normalize-space()='${pergunta}']/following::input[1]
+        #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::input
+        Run Keyword And Ignore Error  Input Text   ${xpath}    ${resposta}
+        #Sleep    2s
+    END
 
 Preenchimento da questão de select
     [Documentation]    Responsavel  pela preenchimento com Select  e Option
+        ...            Utiliza o xpath da pergunta para localizar o campo de resposta
+        ...            Verifica se o tipo da questão é select, caso contrário, não preenche a resposta
     [Tags]    Test
-    [Arguments]    ${pergunta}   ${resposta}
-    ${xpath}=  Set Variable    //span[@aria-hidden='true'][contains(normalize-space(.),'${pergunta}')]/following::select[1]
-    #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::select
-    Run Keyword And Ignore Error   Select From List By Label   ${xpath}    ${resposta}
-    #Sleep    1s
+    [Arguments]    ${pergunta}   ${resposta}  ${tipo}=${None}
+    ${EstaPerguntaeSelect}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${tipos}[3]
+    ${EstaComoNone}=    Run Keyword And Return Status    Should Be Equal As Strings    ${tipo}    ${None}
+    IF    ${EstaPerguntaeSelect} or ${EstaComoNone}
+        # Se o tipo for select, não preencher input
+        ${xpath}=  Set Variable    //span[@aria-hidden='true'][contains(normalize-space(.),'${pergunta}')]/following::select[1]
+        #${xpath}=    Set Variable    //label[contains(text(),"${pergunta}")]/following-sibling::select
+        Run Keyword And Ignore Error   Select From List By Label   ${xpath}    ${resposta}
+        log to console    ${pergunta} foi pelo select.
+    END
 
 Não selecionar resposta obrigatória?
     [Tags]    No_Test

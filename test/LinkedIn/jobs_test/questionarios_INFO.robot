@@ -219,25 +219,25 @@ ${PRE}=      Set Variable    ${pres}[1]
 
 &{INFO024A}    ID=${PRE}-024A
 ...    area=${AREA}
-...    tipo=${tipos}[2]
+...    tipo=${tipos}[3]
 ...    pergunta=What is your level of proficiency in English?
 ...    resposta=None
 
 &{INFO024B}    ID=${PRE}-024B
 ...    area=${AREA}
-...    tipo=${tipos}[2]
+...    tipo=${tipos}[3]
 ...    pergunta=Qual é o seu nível de proficiência em inglês?
 ...    resposta=Intermediário (B1 - Proficiência profissional em desenvolvimento)
 
 &{INFO025}    ID=${PRE}-025
 ...    area=${AREA}
-...    tipo=${tipos}[0]
+...    tipo=${tipos}[2]
 ...    pergunta=How many years of Quality Assurance experience do you currently have?
 ...    resposta=2
 
 &{INFO025A}    ID=${PRE}-025A
 ...    area=${AREA}
-...    tipo=${tipos}[0]
+...    tipo=${tipos}[2]
 ...    pergunta=Quantos anos de experiência em Quality Assurance você possui atualmente?
 ...    resposta=2
 
@@ -309,31 +309,31 @@ ${PRE}=      Set Variable    ${pres}[1]
 
 &{INFO037}   ID=${PRE}-037
 ...     area=${AREA}
-...     tipo=${tipos}[1]
+...     tipo=${tipos}[2]
 ...     pergunta=Quais são os principais desafios enfrentados ao automatizar testes?
 ...     resposta=Os principais desafios enfrentados ao automatizar testes incluem a manutenção constante dos scripts de automação, a adaptação às mudanças na estrutura do sistema alvo e a necessidade de manter uma equipe técnica qualificada. Além disso, é importante garantir que os testes automatizados sejam confiáveis e eficientes.
 
 &{INFO038}   ID=${PRE}-038
 ...     area=${AREA}
-...     tipo=${tipos}[1]
+...     tipo=${tipos}[2]
 ...     pergunta=Você já participou da criação ou manutenção de um framework de automação?
 ...     resposta=Sim, participei da criação e manutenção de um framework de automação utilizando Robot Framework. Trabalhei na definição das estruturas padrão para scripts de teste, na padronização dos processos de execução e na documentação das práticas recomendadas para o uso do framework.
 
 &{INFO039}   ID=${PRE}-039
 ...     area=${AREA}
-...     tipo=${tipos}[1]
+...     tipo=${tipos}[2]
 ...     pergunta=Como você avalia o impacto dos testes automatizados no ciclo de desenvolvimento?
 ...     resposta=Avalio o impacto dos testes automatizados no ciclo de desenvolvimento como positivo e significativo. Eles permitem uma maior velocidade na identificação e correção de problemas, reduzem o tempo necessário para validar novas funcionalidades e aumentam a confiança no lançamento das versões do software.
 
 &{INFO040}   ID=${PRE}-040
 ...    area=${AREA}
-...    tipo=${tipos}[1]
+...    tipo=${tipos}[2]
 ...    pergunta=Quais são as melhores práticas para escrever scripts eficazes em Robot Framework?
 ...    resposta=As melhores práticas para escrever scripts eficazes em Robot Framework incluem: utilizar nomes claros para variáveis e keywords; organizar o código em módulos reutilizáveis; documentar adequadamente cada parte do script; seguir padrões consistentes no estilo do código; utilizar bibliotecas específicas quando necessário; manter os scripts atualizados com as mudanças no sistema alvo.
 
 &{INFO041}   ID=${PRE}-041
  ...    area=${AREA}
- ...    tipo=${tipos}[1]
+ ...    tipo=${tipos}[2]
  ...    pergunta=Cite alguns exemplos práticos onde você aplicou técnicas avançadas no Robot Framework.
  ...    resposta=Técnicas avançadas aplicadas no Robot Framework incluem: uso da biblioteca SeleniumLibrary para interações complexas com elementos web; implementação da técnica Page Object Model (POM) para melhor organização dos elementos da interface; utilização do recurso "Run Keyword If" para condicionais dinâmicas nos scripts; criação de keywords customizadas reutilizáveis em múltiplos cenários.
 

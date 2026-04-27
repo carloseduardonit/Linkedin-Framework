@@ -1,0 +1,3 @@
+Há quantos anos você já usa Automação de testes no trabalho?
+Há quantos anos você já usa Integração e entrega contínuas (CI/CD) no trabalho?
+Há quantos anos você já usa Desenvolvimento de software no trabalho?

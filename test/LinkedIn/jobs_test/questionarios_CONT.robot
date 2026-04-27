@@ -88,3 +88,9 @@ ${PRE}=      Set Variable    ${pres}[0]
 ...       tipo=${tipos}[3]
 ...       pergunta=Vc tem conhecimento no sistema Domínio?
 ...       resposta=No
+
+&{CONT013}  ID=${PRE}-013
+...       area=${AREA}
+...       tipo=${tipos}[3]
+...       pergunta=Há quantos anos você já usa Microsoft Excel no trabalho?
+...       resposta=10

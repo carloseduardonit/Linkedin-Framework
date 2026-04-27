@@ -13,7 +13,7 @@ ${cidade}      None
 ${estado}    Rio de Janeiro, 
 ${Pais}    Brasil
 ${Modalidade}    (Remoto)
-${Local}      ${cidade} ${estado} ${Pais}
+${Local}      ${cidade}, ${estado}, ${Pais}
 ${span_Local_Vaga}      //span[contains(.,'${cidade} ${estado} ${Pais} ${Modalidade}')]
 ${urlJob}    https://www.linkedin.com/jobs/
 ${urlMinhaRede}    https://www.linkedin.com/mynetwork/grow/
