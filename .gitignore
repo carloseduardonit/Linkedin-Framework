@@ -30,3 +30,9 @@ login *.png
 
 /*.
 /test/LinkedIn/linkedin.py
+# Arquivos e Executáveis baixados do ChromeDriver
+chromedriver-win32.zip
+chromedriver-win64.zip
+/chromedriver-win32/
+/chromedriver-win64/
+dependencies.txt
