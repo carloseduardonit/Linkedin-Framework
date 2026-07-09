@@ -99,7 +99,7 @@ pip install robotframework
 ### 🔹 Instalação das dependências
 
 ```bash
-pip install -r requirements.txt
+pip install -r dependencies.txt
 ```
 --- 
 ## 💻 Autor
@@ -114,3 +114,7 @@ Carlos Eduardo dos Santos Figueiredo
 - [Documentação Oficial do RPA.Browser.Selenium]( https://robocorp.com/docs/libraries/rpa-framework/rpa-browser-selenium)
 - [Documentação Oficial do Robot Framework Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
 - [Documentação Oficial do Python](https://docs.python.org/3/)
+- [] ()
+
+## Extensões VSCode
+- [] ()

@@ -2,20 +2,33 @@
 REM === Ativa o ambiente virtual ===
 IF NOT EXIST .venv\ (
     echo Ambiente virtual nao encontrado. Criando um novo ambiente virtual...
+    python.exe -m pip install --upgrade pip
     python -m venv .venv
     call .\.venv\Scripts\activate.bat
-    exit /b
+    copy resources\dependencies.txt dependencies.txt
+    Rem exit /b
+
 ) else (
     echo Ambiente virtual encontrado. Ativando o ambiente virtual...
+    python.exe -m pip install --upgrade pip
     call .\.venv\Scripts\activate.bat
 )
 
 REM === Instala dependências se o arquivo existir ===
-IF EXIST dependencies.txt (
+IF EXIST resources\dependencies.txt (
+    pip list
+    echo Instalando dependências do arquivo resources\dependencies.txt...
+    python.exe -m pip install --upgrade pip
+    pip install -r resources\dependencies.txt
+    pip list
+    robot --version
+    echo Dependências instaladas com sucesso.
+) else IF EXIST dependencies.txt (
     pip list
     echo Instalando dependências do arquivo dependencies.txt...
     pip install -r dependencies.txt
     pip list
+    robot --version
     echo Dependências instaladas com sucesso.
     del /Q dependencies.txt
     echo Arquivo dependencies.txt deletado.
@@ -23,16 +36,16 @@ IF EXIST dependencies.txt (
     echo Arquivo dependencies.txt nao encontrado. Pulando instalacao de dependencias.
 )
 REM === Cria Arquivo necessário ===
-if not exist \test\LinkedIn\linkedin.py (
+if not exist test\LinkedIn\linkedin.py (
     (
         echo # Script para acessar o LinkedIn e realizar acoes automatizadas
         echo senha = ""
         echo email = ""
         echo name = ""
         echo # final do script
-    ) > LinkedIn\linkedin.py 
+    ) > test\LinkedIn\linkedin.py
 ) else (
-    echo Arquivo linkedin.py ja existe. Pulando criacao.
+    echo Arquivo test\LinkedIn\linkedin.py ja existe. Pulando criacao.
 )
 
 REM === Limpa arquivos desnecessários ===
