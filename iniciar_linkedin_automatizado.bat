@@ -45,15 +45,19 @@ REM === Ativa o ambiente virtual ===
 IF NOT EXIST .venv\ (
     echo Ambiente virtual nao encontrado. Criando um novo ambiente virtual...
     python.exe -m pip install --upgrade pip
-    python -m venv .venv
+
     call .\.venv\Scripts\activate.bat
+    python -m venv .venv --upgrade
+    python -m venv .venv --upgrade-deps
     copy resources\dependencies.txt dependencies.txt
     Rem exit /b
 
 ) else (
     echo Ambiente virtual encontrado. Ativando o ambiente virtual...
-    python.exe -m pip install --upgrade pip
+    
     call .\.venv\Scripts\activate.bat
+    python -m venv .venv --upgrade
+    python -m venv .venv --upgrade-deps
 )
 
 REM === Instala dependências se o arquivo existir ===
