@@ -3,8 +3,9 @@
 REM === Baixa e extrai o ChromeDriver se necessário ===
 set "CHROMEDRIVER_WIN64=%~dp0chromedriver-win64\chromedriver-win64"
 set "CHROMEDRIVER_WIN32=%~dp0chromedriver-win32\chromedriver-win32"
-set "CHROMEDRIVER_URL_WIN64=https://storage.googleapis.com/chrome-for-testing-public/150.0.7871.114/win64/chromedriver-win64.zip"
-set "CHROMEDRIVER_URL_WIN32=https://storage.googleapis.com/chrome-for-testing-public/150.0.7871.114/win32/chromedriver-win32.zip"
+set "version=150.0.7871.114"
+set "CHROMEDRIVER_URL_WIN64=https://storage.googleapis.com/chrome-for-testing-public/%version%/win64/chromedriver-win64.zip"
+set "CHROMEDRIVER_URL_WIN32=https://storage.googleapis.com/chrome-for-testing-public/%version%/win32/chromedriver-win32.zip"
 
 if not exist "%CHROMEDRIVER_WIN64%\chromedriver.exe" (
     if not exist "%~dp0chromedriver-win64.zip" (
