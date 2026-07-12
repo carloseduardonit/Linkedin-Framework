@@ -101,6 +101,13 @@ pip install robotframework
 ```bash
 pip install -r dependencies.txt
 ```
+
+### Como sair do .venv
+
+```bash
+deactivate
+```
+
 --- 
 ## 💻 Autor
 
@@ -111,10 +118,9 @@ Carlos Eduardo dos Santos Figueiredo
 ## Material de apoio
 - [Documentação Oficial do Robot Framework](https://robotframework.org/)   
 - [Documentação Oficial do SeleniumLibrary](https://robotframework.org/SeleniumLibrary/SeleniumLibrary.html)
-- [Documentação Oficial do RPA.Browser.Selenium]( https://robocorp.com/docs/libraries/rpa-framework/rpa-browser-selenium)
+- [Documentação Oficial do RPA.Browser.Selenium](https://robocorp.com/docs/libraries/rpa-framework/rpa-browser-selenium)
 - [Documentação Oficial do Robot Framework Browser](https://marketsquare.github.io/robotframework-browser/Browser.html)
 - [Documentação Oficial do Python](https://docs.python.org/3/)
-- [] ()
 
 ## Extensões VSCode
-- [] ()
+- [RobotCode](https://marketplace.visualstudio.com/items?itemName=d-biehl.robotcode) - Suporte completo para Robot Framework
