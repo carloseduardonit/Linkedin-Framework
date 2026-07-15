@@ -89,12 +89,15 @@ Com ele, é possível:
 
 ### 🔹 Pré-requisitos
 
-- **Python 3.9+**
+- **Python 3.9+ até 3.13.14**
 - **Google Chrome** (ou Firefox)
 - **ChromeDriver** compatível com a versão do navegador
+- **RPAFramework**
 - **Robot Framework** instalado globalmente:
 ```bash
 pip install robotframework
+pip install rpaframework
+pip install selenium
 ```
 ### 🔹 Instalação das dependências
 
