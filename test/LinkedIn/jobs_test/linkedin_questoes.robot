@@ -1,7 +1,7 @@
 *** Settings ***
 Library    RPA.Browser.Selenium
 Library    Collections
-Resource    test/LinkedIn/linkedin_suporte.robot
+Resource    ../test/LinkedIn/linkedin_suporte.robot
 Resource    questionarios_CONH.robot
 Resource    questionarios_CONT.robot
 Resource    questionarios_INFO.robot
